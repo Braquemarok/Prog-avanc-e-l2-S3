@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <string>
 #include "Joueur.h"
 #include "Monstre.h"
+#include "Sound.h"
 #include "Map.h"
 
 /*class arme {
@@ -31,10 +33,11 @@ int main()
 	Joueur j;
 	Monstre m;
 	TileMap map;
-	if (!map.load("C:/Users/unpet/Desktop/tileset.png", sf::Vector2u(32, 32), level, 16, 9)) {
+	Sound mus;
+	if (!map.load("/home/chocolat/Bureau/progtest/sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 9)) {
 		std::cout << "erreur map" << std::endl;
 	}
-
+	mus.play();
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -49,6 +52,7 @@ int main()
 		window.draw(map);
 		window.draw(j.sperso);
 		window.draw(m.sperso);
+		window.draw(j.gettir());
 		window.display();
 	}
 
