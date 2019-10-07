@@ -9,7 +9,7 @@ public:
 		armure = 0;
 		arme = "baton";
 		degats = 3;
-		if (!perso.loadFromFile("/home/chocolat/Bureau/progtest/sprites/sprite.png")) {
+		if (!perso.loadFromFile("sprites/sprite.png")) {
 			std::cout << "erreur" << std::endl;
 		}
 		perso.setSmooth(true);

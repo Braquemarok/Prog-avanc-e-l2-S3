@@ -4,7 +4,7 @@ public:
 	sf::Texture tir;
 	sf::Sprite stir;
   Tir() {
-    if (!tir.loadFromFile("/home/chocolat/Bureau/progtest/sprites/sprite.png")) {
+    if (!tir.loadFromFile("sprites/sprite.png")) {
 			std::cout << "erreur" << std::endl;
 		}
 		tir.setSmooth(true);

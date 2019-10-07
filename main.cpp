@@ -34,7 +34,7 @@ int main()
 	Monstre m;
 	TileMap map;
 	Sound mus;
-	if (!map.load("/home/chocolat/Bureau/progtest/sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 9)) {
+	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 9)) {
 		std::cout << "erreur map" << std::endl;
 	}
 	mus.play();
