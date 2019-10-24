@@ -10,4 +10,7 @@ public:
   void play(){
     music.play();
   }
+  void stop(){
+    music.stop();
+  }
 };
