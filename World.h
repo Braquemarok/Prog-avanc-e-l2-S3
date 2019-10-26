@@ -2,19 +2,24 @@
 #include "Monstre.h"
 #include "Sound.h"
 #include "Map.h"
+#include "lecteur.cpp"
 
 class World
 {
 public:
   World(){
     gameover=false;
+    vector<int> lv=lecteur("Maps/lv1.txt");
+    //const int taille=lv.at(0);
+    int level[128];
     for(int i=0; i<5; i++){
   		m[i]= new Monstre(i*32,i*32);
   	}
-    for(int i=0; i<900; i++){
-      level[i]=0;
+    const int nbtile= lv.size();
+    for(int i=0; i<nbtile; i++){
+      level[i]=lv.at(i);
     }
-  	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 30, 30)) {
+  	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 8)) {
   		std::cout << "erreur map" << std::endl;
   	}
   	mus.play();
@@ -67,6 +72,5 @@ private:
 	Monstre *m[5];
 	TileMap map;
   Sound mus;
-  int level[900];
   bool gameover;
 };

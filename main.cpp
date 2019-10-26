@@ -13,7 +13,7 @@ private:
 int main()
 {
 	World world;
-	sf::RenderWindow window(sf::VideoMode(512, 288), "Tilemap");
+	sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
 	window.setFramerateLimit(60);
 	while (window.isOpen())
 	{

@@ -1,23 +1,8 @@
 #include <fstream>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
 
-class Lecteur
-{
-public:
-  int* map(){
-    ifstream fichier("fichier.txt");
-
-     if(fichier)
-     {
-       while (is.get(c)){
-          std::cout << c;
-        }
-     }
-     else
-     {
-        cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
-     }
-   }
-
-private:
-
-};
+vector<int> lecteur (string s);
