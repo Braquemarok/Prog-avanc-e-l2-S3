@@ -4,7 +4,7 @@ LDFLAGS = -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 SRC = main.cpp
 BIN = game
 
-$(BIN): $(SRC) Joueur.h Monstre.h Map.h tir.h Sound.h
+$(BIN): $(SRC) World.h Joueur.h Monstre.h Map.h Tir.h Sound.h
 	$(CC) $(CFLAGS) $(SRC) -o $(BIN) $(LDFLAGS)
 
 

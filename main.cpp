@@ -2,59 +2,34 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <string>
-#include "Joueur.h"
-#include "Monstre.h"
-#include "Sound.h"
-#include "Map.h"
+#include "World.h"
 
-/*class arme {
-public:
-
-private:
-
-};*/
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(512, 288), "Tilemap");
-
-	const int level[] =
-	{
-		3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-		3, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 3,
-		3, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-		3, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 3,
-		3, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 3,
-		3, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 3,
-		3, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 3,
-		3, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 3,
-		3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-	};
-	Joueur j;
-	Monstre m;
-	TileMap map;
-	Sound mus;
-	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 9)) {
-		std::cout << "erreur map" << std::endl;
-	}
-	mus.play();
+	World world;
+	sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
+	window.setFramerateLimit(60);
 	while (window.isOpen())
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed || world.isgameover())
 				window.close();
 		}
-		j.actions();
-		m.actions(j);
-		window.clear();
-		window.draw(map);
-		window.draw(j.sperso);
-		window.draw(m.sperso);
-		window.draw(j.gettir());
+		world.handlevent();
+		window.draw(world.getMap());
+		window.draw(world.sp());
+		for(int i=0; i<world.nbm();i++){
+			window.draw(world.sm(i));
+		}
+		for(int i=0; i<world.je();i++){
+			window.draw(world.st(i));
+		}
 		window.display();
+		window.clear();
 	}
-
+	
 	return 0;
 }
