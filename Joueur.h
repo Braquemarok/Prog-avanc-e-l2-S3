@@ -4,7 +4,7 @@
 class Joueur
 {
 public:
-
+	//constructeur
 	Joueur() {
 		vie = 2000;
 		armure = 0;
@@ -22,11 +22,9 @@ public:
 		sperso.setTextureRect(sf::IntRect(32, 0, 32, 32));
 		sperso.setPosition(256, 128);
 	}
+	//degat recus
 	void nbdegats(int nb) {
 		vie -= nb - armure;
-	}
-	void atk(Joueur &monstre) {
-		monstre.nbdegats(degats);
 	}
 	void armes(std::string nom, int dgt) {
 		arme = nom;
@@ -38,6 +36,7 @@ public:
 	int getdegat(){
 		return degats;
 	}
+	//detection collision plus degat si vrai
 	void damage(sf::Sprite m, int x){
 		sf::FloatRect boundingBox = sperso.getGlobalBounds();
 		sf::FloatRect otherBox = m.getGlobalBounds();
@@ -46,6 +45,7 @@ public:
     	nbdegats(x);
 		}
 	}
+	//action du joueur
 	void actions() {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			sperso.move(0, -5);
@@ -72,12 +72,15 @@ public:
 			sens=3;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-			Tir* tir= new Tir(sperso.getPosition().x, sperso.getPosition().y, sens);
-			tirs.push_back(tir);
-			j++;
-			if(j>=nbtir){
-				tirs.clear();
-				j=0;
+			//action de tir
+			if(j<nbtir){
+				Tir* tir= new Tir(sperso.getPosition().x, sperso.getPosition().y, sens);
+				tirs.push_back(tir);
+				j++;
+			}
+			else{
+				tirs.erase(tirs.begin());
+				j--;
 			}
 		}
 		if (x > 2) {
@@ -90,6 +93,7 @@ public:
 			tirs[i]->actions();
 		}
 	}
+	//getters
 	sf::Sprite getsperso(){
 		return sperso;
 	}

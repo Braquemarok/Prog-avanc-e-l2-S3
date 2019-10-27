@@ -3,7 +3,7 @@ public:
   sf::Music music;
 
   Sound(){
-    if (!music.openFromFile("music.ogg")){
+    if (!music.openFromFile("Sounds/music.ogg")){
       std::cout << "erreur" << std::endl;
     }
   }

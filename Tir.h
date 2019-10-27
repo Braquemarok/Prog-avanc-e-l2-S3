@@ -26,7 +26,7 @@ public:
     sens=z;
 		degats=10;
 	}
-
+	//action du tir
 	void actions() {
 		if (sens==0) {
 			stir.move(0, -7);
@@ -41,6 +41,7 @@ public:
 			stir.move(7, 0);
 		}
 	}
+	//getters
 	sf::Sprite getSprite(){
 		return stir;
 	}
@@ -50,15 +51,12 @@ public:
 	int gettimer(){
 		return timer;
 	}
-  /*bool colli(int x, int y){
-    return false;
-  }*/
 
 private:
 
 	int degats;
   int sens;
-	int nbtir=1000;
+	int nbtir=10;
 	int timer=500;
 
 };
