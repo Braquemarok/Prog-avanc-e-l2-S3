@@ -2,21 +2,24 @@
 #include "Monstre.h"
 #include "Sound.h"
 #include "Map.h"
-#include "lecteur.cpp"
-
+#include "Lecteur.h"
+/* les noms des fonctions semblant assez explixites,
+il ne parait donc pas necessaire de les detailler plus
+qu'elles ne le sont deja*/
 class World
 {
 public:
   World(){
+
+    vector<int> lv = lecteur("Maps/lv1.txt");
+
     gameover=false;
-    vector<int> lv=lecteur("Maps/lv1.txt");
-    //const int taille=lv.at(0);
-    int level[128];
-    for(int i=0; i<5; i++){
-  		m[i]= new Monstre(i*32,i*32);
+    nbmonstre=5;
+    for(int i=0; i<nbmonstre; i++){
+  		m.push_back(new Monstre(i*32,i*32));
   	}
-    const int nbtile= lv.size();
-    for(int i=0; i<nbtile; i++){
+    const int nbtile = lv.size();
+    for(int i=0; i<nbtile ; i++){
       level[i]=lv.at(i);
     }
   	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 8)) {
@@ -26,21 +29,21 @@ public:
   }
   void handlevent(){
     j.actions();
-		for(int i=0; i<5; i++){
+		for(int i=0; i<m.size(); i++){
 			m[i]->actions(j);
 		}
-    for(int i=0; i<5; i++){
+    for(int i=0; i<m.size(); i++){
 			j.damage(m[i]->getsmonstre(), m[i]->getdegat());
       if(j.mort()){
         gameover=true;
       }
 		}
-    for(int i=0; i<5; i++){
+    for(int i=0; i<m.size(); i++){
       for(int x=0; x<j.gettaillet(); x++){
-			     m[1]->damage(j.getstir(x), j.getdegat());
+			     m[i]->damage(j.getstir(x), j.getdegat());
       }
       if(m[i]->mort()){
-        w--;
+        m.erase(m.begin()+i);
       }
 		}
   }
@@ -48,7 +51,7 @@ public:
     return m[i]->getsmonstre();
   }
   int nbm(){
-    return w;
+    return m.size();
   }
   sf::Sprite sp(){
     return j.getsperso();
@@ -68,9 +71,10 @@ public:
 
 private:
 	Joueur j;
-  int w=5;
-	Monstre *m[5];
+	vector<Monstre*> m;
+  int nbmonstre;
 	TileMap map;
   Sound mus;
+  int level[128];
   bool gameover;
 };

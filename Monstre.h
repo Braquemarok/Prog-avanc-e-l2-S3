@@ -6,7 +6,7 @@ public:
 		vie = 20;
 		armure = 0;
 		degats = 3;
-		if (!perso.loadFromFile("sprites/sprite.png")) {
+		if (!perso.loadFromFile("sprites/monster1.png")) {
 			std::cout << "erreur" << std::endl;
 		}
 		perso.setSmooth(true);
@@ -19,7 +19,7 @@ public:
 		vie = 20;
 		armure = 0;
 		degats = 3;
-		if (!perso.loadFromFile("sprites/sprite.png")) {
+		if (!perso.loadFromFile("sprites/monster1.png")) {
 			std::cout << "erreur" << std::endl;
 		}
 		perso.setSmooth(true);
@@ -34,6 +34,7 @@ public:
 	int getdegat(){
 		return degats;
 	}
+	//detection collision plus degat si vrai
 	void damage(sf::Sprite m, int x){
 		sf::FloatRect boundingBox = sperso.getGlobalBounds();
 		sf::FloatRect otherBox = m.getGlobalBounds();
@@ -42,6 +43,7 @@ public:
     	vie-=x;
 		}
 	}
+	//action monstre en fonction du joueur
 	void actions(Joueur j) {
 		if (j.getsperso().getPosition().y < sperso.getPosition().y) {
 			sperso.move(0, -3);
@@ -70,6 +72,7 @@ public:
 			sperso.setPosition(256, 128);
 		}
 	}
+	//getters
 	sf::Sprite getsmonstre(){
 		return sperso;
 	}

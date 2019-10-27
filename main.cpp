@@ -3,12 +3,7 @@
 #include <iostream>
 #include <string>
 #include "World.h"
-/*class arme {
-public:
 
-private:
-
-};*/
 
 int main()
 {
@@ -35,6 +30,6 @@ int main()
 		window.display();
 		window.clear();
 	}
-	//merde
+	
 	return 0;
 }
