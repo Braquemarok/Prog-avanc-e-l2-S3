@@ -11,8 +11,10 @@ public:
 		stir.setTexture(tir);
 		stir.setTextureRect(sf::IntRect(32, 0, 32, 32));
 		stir.setPosition(-32, -32);
+		nbtir=10;
 		degats=10;
     sens=-1;
+		longueur=300;
 
 	}
 	Tir(int x, int y, int z) {
@@ -25,6 +27,8 @@ public:
 		stir.setPosition(x, y);
     sens=z;
 		degats=10;
+		nbtir=10;
+		longueur=300;
 	}
 	//action du tir
 	void actions() {
@@ -40,6 +44,13 @@ public:
 		if (sens==3) {
 			stir.move(7, 0);
 		}
+		longueur-=7;
+		if(longueur<=0){
+			setdead();
+		}
+	}
+	void setdead(){
+		ded=true;
 	}
 	//getters
 	sf::Sprite getSprite(){
@@ -48,15 +59,16 @@ public:
 	int getnbtir(){
 		return nbtir;
 	}
-	int gettimer(){
-		return timer;
+	bool done(){
+		return ded;
 	}
 
 private:
 
 	int degats;
   int sens;
-	int nbtir=10;
-	int timer=500;
+	int nbtir;
+	int longueur;
+	bool ded=false;
 
 };

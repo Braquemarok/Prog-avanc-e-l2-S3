@@ -46,7 +46,7 @@ public:
 		}
 	}
 	//action du joueur
-	void actions() {
+	void actions(int clock) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			sperso.move(0, -5);
 			sperso.setTextureRect(sf::IntRect(32 * x, 96, 32, 32));
@@ -71,17 +71,10 @@ public:
 			x++;
 			sens=3;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && clock%200<=17) {
 			//action de tir
-			if(j<nbtir){
-				Tir* tir= new Tir(sperso.getPosition().x, sperso.getPosition().y, sens);
-				tirs.push_back(tir);
-				j++;
-			}
-			else{
-				tirs.erase(tirs.begin());
-				j--;
-			}
+			Tir* tir= new Tir(sperso.getPosition().x, sperso.getPosition().y, sens);
+			tirs.push_back(tir);
 		}
 		if (x > 2) {
 			x = 0;
@@ -89,8 +82,11 @@ public:
 		if ((sperso.getPosition().x > 512) || (sperso.getPosition().x < 0) || (sperso.getPosition().y > 256) || (sperso.getPosition().y < 0)) {
 			sperso.setPosition(256, 128);
 		}
-		for(int i=0; i<j; i++){
+		for(unsigned int i=0; i<tirs.size(); i++){
 			tirs[i]->actions();
+			if(tirs[i]->done()){
+				tirs.erase(tirs.begin()+i);
+			}
 		}
 	}
 	//getters
@@ -101,12 +97,14 @@ public:
 		return tirs[i]->getSprite();
 	}
 	int gettaillet(){
-		return j;
+		return tirs.size();
+	}
+	Tir* getTir(int i){
+		return tirs[i];
 	}
 
 private:
 
-	int j=1;
 	int x = 0;
 	int vie;
 	int armure;

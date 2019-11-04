@@ -14,33 +14,33 @@ public:
     vector<int> lv = lecteur("Maps/lv1.txt");
 
     gameover=false;
-    nbmonstre=5;
+    nbmonstre=lv[0];
     for(int i=0; i<nbmonstre; i++){
   		m.push_back(new Monstre(i*32,i*32));
   	}
-    const int nbtile = lv.size();
+    const int nbtile = 128;
     for(int i=0; i<nbtile ; i++){
-      level[i]=lv.at(i);
+      level[i]=lv[i+1];
     }
   	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 8)) {
   		std::cout << "erreur map" << std::endl;
   	}
   	mus.play();
   }
-  void handlevent(){
-    j.actions();
-		for(int i=0; i<m.size(); i++){
+  void handlevent(int clock){
+    j.actions(clock);
+		for(unsigned int i=0; i<m.size(); i++){
 			m[i]->actions(j);
 		}
-    for(int i=0; i<m.size(); i++){
+    for(unsigned int i=0; i<m.size(); i++){
 			j.damage(m[i]->getsmonstre(), m[i]->getdegat());
       if(j.mort()){
         gameover=true;
       }
 		}
-    for(int i=0; i<m.size(); i++){
+    for(unsigned int i=0; i<m.size(); i++){
       for(int x=0; x<j.gettaillet(); x++){
-			     m[i]->damage(j.getstir(x), j.getdegat());
+			     m[i]->damage(j.getTir(x), j.getdegat());
       }
       if(m[i]->mort()){
         m.erase(m.begin()+i);

@@ -35,12 +35,13 @@ public:
 		return degats;
 	}
 	//detection collision plus degat si vrai
-	void damage(sf::Sprite m, int x){
+	void damage(Tir* m, int x){
 		sf::FloatRect boundingBox = sperso.getGlobalBounds();
-		sf::FloatRect otherBox = m.getGlobalBounds();
+		sf::FloatRect otherBox = m->getSprite().getGlobalBounds();
 		if (boundingBox.intersects(otherBox))
 		{
     	vie-=x;
+			m->setdead();
 		}
 	}
 	//action monstre en fonction du joueur
@@ -48,22 +49,22 @@ public:
 		if (j.getsperso().getPosition().y < sperso.getPosition().y) {
 			sperso.move(0, -3);
 			sperso.setTextureRect(sf::IntRect(32 * x, 96, 32, 32));
-			x++;
+			//x++;
 		}
 		if (j.getsperso().getPosition().y > sperso.getPosition().y) {
 			sperso.move(0, 3);
 			sperso.setTextureRect(sf::IntRect(32 * x, 0, 32, 32));
-			x++;
+			//x++;
 		}
 		if (j.getsperso().getPosition().x < sperso.getPosition().x) {
 			sperso.move(-3, 0);
 			sperso.setTextureRect(sf::IntRect(32 * x, 32, 32, 32));
-			x++;
+			//x++;
 		}
 		if (j.getsperso().getPosition().x > sperso.getPosition().x) {
 			sperso.move(3, 0);
 			sperso.setTextureRect(sf::IntRect(32 * x, 64, 32, 32));
-			x++;
+			//x++;
 		}
 		if (x > 2) {
 			x = 0;

@@ -18,7 +18,7 @@ vector<int> lecteur (string s)
       {
         istringstream iss (ligne);
         string y=iss.str();
-        for(int i=0; i<y.size(); i++){
+        for(unsigned int i=0; i<y.size(); i++){
            if((int)y.at(i)-'0'>=0 && (int)y.at(i)-'0'<=9){
              x.push_back((int)y.at(i)-'0');
            }
@@ -28,9 +28,6 @@ vector<int> lecteur (string s)
    else
    {
       cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
-   }
-   for(int i=0; i<x.size(); i++){
-     printf("%i\n", x.at(i));
    }
    return x;
 }
