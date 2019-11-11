@@ -11,6 +11,8 @@ vector<int> lecteur (string s)
 {
    ifstream fichier(s);
    vector<int> x;
+
+   int z=0, t, u;
    if(fichier)
    {
       string ligne;
@@ -19,8 +21,21 @@ vector<int> lecteur (string s)
         istringstream iss (ligne);
         string y=iss.str();
         for(unsigned int i=0; i<y.size(); i++){
-           if((int)y.at(i)-'0'>=0 && (int)y.at(i)-'0'<=9){
-             x.push_back((int)y.at(i)-'0');
+          t=0;
+          if((int)y.at(i)-'0'>=0 && (int)y.at(i)-'0'<=9){
+             while(i<y.size() && (int)y.at(i)-'0'>=0 && (int)y.at(i)-'0'<=9){
+               z++;
+               i++;
+             }
+             for(int j=0; j<z; j++){
+               u=1;
+               for(int w=0; w<j; w++){
+                 u*=10;
+               }
+               t+=((int)y.at(i-j-1)-'0')*u;
+             }
+             x.push_back(t);
+             z=0;
            }
          }
       }

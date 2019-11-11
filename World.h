@@ -1,5 +1,5 @@
-#include "Joueur.h"
-#include "Monstre.h"
+#include "entite/Joueur/Joueur.h"
+#include "entite/Monstres/Monstre.h"
 #include "Sound.h"
 #include "Map.h"
 #include "Lecteur.h"
@@ -18,11 +18,11 @@ public:
     for(int i=0; i<nbmonstre; i++){
   		m.push_back(new Monstre(i*32,i*32));
   	}
-    const int nbtile = 128;
+    const int nbtile = lv[1]*lv[2];
     for(int i=0; i<nbtile ; i++){
-      level[i]=lv[i+1];
+      level[i]=lv[i+3];
     }
-  	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, 16, 8)) {
+  	if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), level, lv[1], lv[2])) {
   		std::cout << "erreur map" << std::endl;
   	}
   	mus.play();
@@ -30,10 +30,10 @@ public:
   void handlevent(int clock){
     j.actions(clock);
 		for(unsigned int i=0; i<m.size(); i++){
-			m[i]->actions(j);
+			m[i]->actions(j, clock);
 		}
     for(unsigned int i=0; i<m.size(); i++){
-			j.damage(m[i]->getsmonstre(), m[i]->getdegat());
+			j.damage(m[i]->getEntite(), m[i]->getdegat());
       if(j.mort()){
         gameover=true;
       }
@@ -48,13 +48,13 @@ public:
 		}
   }
   sf::Sprite sm(int i){
-    return m[i]->getsmonstre();
+    return m[i]->getEntite();
   }
   int nbm(){
     return m.size();
   }
   sf::Sprite sp(){
-    return j.getsperso();
+    return j.getEntite();
   }
   sf::Sprite st(int i){
     return j.getstir(i);
@@ -71,7 +71,7 @@ public:
 
 private:
 	Joueur j;
-	vector<Monstre*> m;
+	vector<Entite*> m;
   int nbmonstre;
 	TileMap map;
   Sound mus;
