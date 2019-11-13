@@ -1,12 +1,23 @@
+#ifndef DEF_MAIN
+#define DEF_MAIN
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <string>
+<<<<<<< HEAD
+#include "Game.h"
+=======
 #include "World.h"
+>>>>>>> v2
 
 
 int main()
 {
+<<<<<<< HEAD
+	Game* game= new Game();
+	game->play();
+=======
 	World world;
 	sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
 	window.setFramerateLimit(60);
@@ -31,5 +42,7 @@ int main()
 		window.clear();
 	}
 	
+>>>>>>> v2
 	return 0;
 }
+#endif

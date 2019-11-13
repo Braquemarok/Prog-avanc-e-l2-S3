@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+#ifndef DEF_L
+#define DEF_L
+=======
+>>>>>>> v2
 
 #include <fstream>
 #include <iostream>
@@ -7,6 +12,10 @@
 #include <vector>
 using namespace std;
 
+<<<<<<< HEAD
+vector<int> lecteur (string s);
+#endif
+=======
 vector<int> lecteur (string s)
 {
    ifstream fichier(s);
@@ -34,3 +43,4 @@ vector<int> lecteur (string s)
    }
    return x;
 }
+>>>>>>> v2

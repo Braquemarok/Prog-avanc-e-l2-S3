@@ -1,0 +1,1 @@
+void animation(int x);
