@@ -1,30 +1,22 @@
 #ifndef DEF_TIR
 #define DEF_TIR
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <iostream>
+
 class Tir
 {
 public:
 
-	Tir(int z) {
-
-    sens=z;
-		degats=10;
-		longueur=300;
-		vitesse=10;
-	}
+	Tir(int z);
 	//action du tir
 	virtual void actions()=0;
-	
-	void setdead(){
-		ded=true;
-	}
+
+	void setdead();
 	//getters
-	sf::Sprite getSprite(){
-		return stir;
-	}
-	bool done(){
-		return ded;
-	}
+	sf::Sprite getSprite();
+	bool done();
 
 protected:
 

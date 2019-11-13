@@ -1,16 +1,15 @@
+#ifndef DEF_SOUND
+#define DEF_SOUND
+
+#include <SFML/Audio.hpp>
+#include <iostream>
+
 class Sound{
 public:
   sf::Music music;
 
-  Sound(){
-    if (!music.openFromFile("Sounds/music.ogg")){
-      std::cout << "erreur" << std::endl;
-    }
-  }
-  void play(){
-    music.play();
-  }
-  void stop(){
-    music.stop();
-  }
+  Sound();
+  void play();
+  void stop();
 };
+#endif

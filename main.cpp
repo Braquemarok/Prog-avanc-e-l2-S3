@@ -1,3 +1,6 @@
+#ifndef DEF_MAIN
+#define DEF_MAIN
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -7,7 +10,8 @@
 
 int main()
 {
-	Game game;
-	game.play();
+	Game* game= new Game();
+	game->play();
 	return 0;
 }
+#endif
