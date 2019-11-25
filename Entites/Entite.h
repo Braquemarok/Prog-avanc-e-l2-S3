@@ -5,6 +5,7 @@
 #include "Tirs/Tir.h"
 #include "Tirs/Tir1.h"
 #include "Tirs/Tir2.h"
+#include "Tirs/Liste_Tir.h"
 #include "Animation.h"
 
 class Entite
@@ -15,8 +16,8 @@ public:
 	bool mort() const ;
 	int getdegat();
 	//detection collision plus degat si vrai
-	void damage(Tir* m, int x);
-  	void damage(sf::Sprite m, int x);
+	void damage( Tir* m, int degats);
+  	void damage( sf::Sprite m, int degats );
 	//action du joueur
   	virtual void actions(int clock);
   	//action monstre en fonction du joueur
@@ -36,7 +37,7 @@ protected:
   	int x = 0;
 	int y=96;
 	int sens;
-	std::vector<Tir*> tirs;
+	Liste_tir tirs;
 
 };
 #endif

@@ -12,6 +12,7 @@ Liste_tir::Liste_tir(){
 
   list = NULL;
   lvar = NULL;
+  taille = 0;
 }
 
 //Méthodes d'accès et autres
@@ -44,6 +45,8 @@ void Liste_tir::ajouter( Tir* t ){
 
     list = res;
   }
+
+  taille++;
 } 
 
 /**
@@ -68,6 +71,15 @@ Tir* Liste_tir::get( int i ){
   }
 
   return lvar->premier;  
+}
+
+/**
+ * \brief Retourne la taille de la liste
+ * \return La taille de la liste
+*/
+int Liste_tir::size(){
+
+  return taille;
 }
 
 /**
@@ -112,6 +124,7 @@ void Liste_tir::supprimer( int i ){
 
   delete suppr;
     
+  taille--;
 }
 
 /**

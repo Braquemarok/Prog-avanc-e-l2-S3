@@ -1,7 +1,9 @@
 #include "Tir1.h"
 
+using namespace std; 
+
 Tir1::Tir1(int x, int y, int z) : Tir(z){
-  if (!tir.loadFromFile("sprites/sprite.png")) {
+  if (!tir.loadFromFile("Sprites/iceball.png")) {
     std::cout << "erreur" << std::endl;
   }
   tir.setSmooth(true);
@@ -11,22 +13,24 @@ Tir1::Tir1(int x, int y, int z) : Tir(z){
   degats=1000;
   longueur=300;
   vitesse=3;
+  z = x;
+  t = y;
 }
 void Tir1::actions(){
-  if (sens==0) {
-    stir.move(0, -vitesse);
-  }
-  if (sens==1) {
-    stir.move(0, vitesse);
-  }
-  if (sens==2) {
-    stir.move(-vitesse, 0);
-  }
-  if (sens==3) {
-    stir.move(vitesse, 0);
-  }
+
+  stir.move(sf::Mouse::getPosition().x-z, sf::Mouse::getPosition().y-t);
   longueur-=vitesse;
   if(longueur<=0){
     setdead();
   }
 }
+ /**
+  * \brief La fonction s'occupe de calculer la distance entre deux boules
+  */
+/*
+double Tir1::distance( int x, int y ){
+
+  double res = sqrt( pow(( sf::Mouse::getPosition().x - x ), 2 ) + pow(( sf::Mouse::getPosition().y - y ), 2) );
+
+  return res;
+}*/

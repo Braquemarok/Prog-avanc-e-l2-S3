@@ -21,6 +21,9 @@ class Liste_entite{
     //La liste de 'travail'
     liste lvar;
 
+    //Taille de la liste principale
+    int taille;
+
     void liberer_liste( liste L );
 
     public:
@@ -31,6 +34,7 @@ class Liste_entite{
     //Méthodes d'accès et autres
     void ajouter( Entite* e );
     Entite* get( int i );
+    int size();
     void supprimer( int i );
     void free();    
     void to_string();

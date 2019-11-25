@@ -2,7 +2,7 @@
 
 Game::Game(){
 
-  window.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "poopy gayme");
+  window.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "I Wanna Be The Boshy");
   window.setFramerateLimit(60);
 }
 void Game::play(){

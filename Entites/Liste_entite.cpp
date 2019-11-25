@@ -12,6 +12,7 @@ Liste_entite::Liste_entite(){
 
   list = NULL;
   lvar = NULL;
+  taille = 0;
 }
 
 //Méthodes d'accès et autres
@@ -44,11 +45,14 @@ void Liste_entite::ajouter( Entite* e ){
 
     list = res;
   }
+
+  taille++;
 } 
 
 /**
  * \brief Retourne l'entité à la case i de la liste
  * \param i la position de l'entité dans la liste
+ * \return L'entité à la position i
 */
 Entite* Liste_entite::get( int i ){
 
@@ -68,6 +72,15 @@ Entite* Liste_entite::get( int i ){
   }
 
   return lvar->premier;  
+}
+
+/**
+ * \brief Retourne la taille de la liste
+ * \return La taille de la liste
+*/
+int Liste_entite::size(){
+
+  return taille;
 }
 
 /**
@@ -111,7 +124,8 @@ void Liste_entite::supprimer( int i ){
   }
 
   delete suppr;
-    
+
+  taille--;    
 }
 
 /**
