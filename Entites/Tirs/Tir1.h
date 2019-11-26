@@ -7,10 +7,6 @@ class Tir1 : public Tir
 {
 public:
 
-	int z,t;
-
-	Tir1(int x, int y, int z);
-	void actions();
-	double distance( int x, int y );
+	Tir1(int x, int y, int z, int v);
 };
 #endif

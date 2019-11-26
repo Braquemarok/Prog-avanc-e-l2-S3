@@ -10,7 +10,7 @@ public:
 	Joueur();
 
 	//action du joueur
-	void actions(int clock);
+	void actions(int clock, int z, int t);
 
 private:
 

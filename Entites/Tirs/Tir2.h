@@ -7,7 +7,6 @@ class Tir2 : public Tir
 {
 public:
 
-	Tir2(int x, int y, int z);
-	void actions();
+	Tir2(int x, int y, int z, int v);
 };
 #endif

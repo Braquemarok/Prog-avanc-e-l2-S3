@@ -37,49 +37,69 @@ void Entite::damage( sf::Sprite m, int degats ){
   if (boundingBox.intersects(otherBox))
     vie -= degats;
 }
+void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
+  sf::RectangleShape rs;
+  rs.setScale(32,32);
 
+  for(int i=0; i<width; i++){
+    for(int j=0; j<height; j++){
+      if(tiles[i + j * width]>=3){
+        rs.setPosition(sf::Vector2f(i * tileSize.x, j * tileSize.y));
+        //std::cout<<rs.getPosition().x<<std::endl;
+        //std::cout<<rs.getPosition().y<<std::endl;
+      }
+      if (sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
+        while(sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
+          if(sperso.getPosition().x<=rs.getPosition().x){
+            sperso.move(-0.001,0);
+          }
+          else if(sperso.getPosition().x>rs.getPosition().x){
+            sperso.move(0.001,0);
+          }
+          if(sperso.getPosition().y<=rs.getPosition().y){
+            sperso.move(0,-0.001);
+          }
+          else if(sperso.getPosition().y>rs.getPosition().y){
+            sperso.move(0,0.001);
+          }
+        }
+        //std::cout<<"MUR"<<std::endl;
+      }
+    }
+  }
+}
 //action du joueur
  void Entite::actions(int clock){
 
-  Tir* tir;
-
-  if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock%200 <= 17 ) {
-
-    //action de tir
-    tir = new Tir1( sperso.getPosition().x, sperso.getPosition().y, sens );
-    tirs.ajouter(tir);
-  }
 }
+void Entite::actions(int clock, int z, int t){
 
+}
 //action monstre en fonction du joueur
- void Entite::actions(Entite j, int clock){
-  if (j.getEntite().getPosition().y < sperso.getPosition().y) {
+ void Entite::actions(Entite* j, int clock){
+  if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);
     sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
     animation(x);
   }
-  if (j.getEntite().getPosition().y > sperso.getPosition().y) {
+  if (j->getEntite().getPosition().y > sperso.getPosition().y) {
 
     sperso.move(0, 3);
     sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
     animation(x);
   }
-  if (j.getEntite().getPosition().x < sperso.getPosition().x) {
+  if (j->getEntite().getPosition().x < sperso.getPosition().x) {
 
     sperso.move(-3, 0);
     sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
     animation(x);
   }
-  if (j.getEntite().getPosition().x > sperso.getPosition().x) {
+  if (j->getEntite().getPosition().x > sperso.getPosition().x) {
 
     sperso.move(3, 0);
     sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
     animation(x);
-  }
-  if ((sperso.getPosition().x > 512) || (sperso.getPosition().x < 0) || (sperso.getPosition().y > 256) || (sperso.getPosition().y < 0)) {
-
-    sperso.setPosition(256, 128);
   }
 }
 

@@ -9,11 +9,11 @@
 #include "Lecteur.h"
 
 class World{
-  
+
 public:
 
   World();
-  void handlevent(int clock);
+  void handlevent(int clock, int x, int y);
   sf::Sprite sm(int i);
   int nbm();
   sf::Sprite sp();
@@ -24,11 +24,10 @@ public:
 
 private:
 
-	Joueur j;
+	Joueur* j;
 	Liste_entite m;
   int nbmonstre;
 	TileMap map;
-  Sound mus;
   int level[128];
   bool gameover;
 };
