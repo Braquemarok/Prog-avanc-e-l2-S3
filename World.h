@@ -2,6 +2,7 @@
 #define DEF_W
 
 #include "Entites/Joueur/Joueur.h"
+#include "Entites/Joueur/Vie.h"
 #include "Entites/Monstres/Monstre.h"
 #include "Entites/Liste_entite.h"
 #include "Sound.h"
@@ -18,6 +19,7 @@ public:
   int nbm();
   sf::Sprite sp();
   sf::Sprite st(int i);
+  sf::Text jvie();
   TileMap getMap();
   int je();
   bool isgameover();
@@ -25,6 +27,7 @@ public:
 private:
 
 	Joueur* j;
+  Vie* viej;
 	Liste_entite m;
   int nbmonstre;
 	TileMap map;

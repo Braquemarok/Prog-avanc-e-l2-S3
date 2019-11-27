@@ -31,6 +31,7 @@ public:
 	sf::Sprite getstir(int i);
 	int gettaillet();
 	Tir* getTir(int i);
+	int getvie();
 
 protected:
 

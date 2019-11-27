@@ -8,3 +8,13 @@ double distance( int x, int y, int z, int t){
   }
   return res;
 }
+double mur(int x, int y){
+  double res;
+  if(x-y<0){
+    res=y-x;
+  }
+  else{
+    res=x-y;
+  }
+  return res;
+}

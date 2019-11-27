@@ -36,6 +36,7 @@ void Game::draw(){
   window.clear();
   window.draw(world->getMap());
   window.draw(world->sp());
+  window.draw(world->jvie());
   for(int i=0; i<world->nbm();i++){
     window.draw(world->sm(i));
   }

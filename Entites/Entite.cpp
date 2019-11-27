@@ -50,20 +50,23 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
       }
       if (sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
         while(sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
-          if(sperso.getPosition().x<=rs.getPosition().x){
-            sperso.move(-0.001,0);
+          if(mur(sperso.getPosition().x,rs.getPosition().x)>mur(sperso.getPosition().y,rs.getPosition().y)){
+            if(sperso.getPosition().x<=rs.getPosition().x){
+              sperso.move(-0.1,0);
+            }
+            else if(sperso.getPosition().x>rs.getPosition().x){
+              sperso.move(0.1,0);
+            }
           }
-          else if(sperso.getPosition().x>rs.getPosition().x){
-            sperso.move(0.001,0);
+          else{
+            if(sperso.getPosition().y<=rs.getPosition().y){
+              sperso.move(0,-0.1);
+            }
+            else if(sperso.getPosition().y>rs.getPosition().y){
+              sperso.move(0,0.1);
+            }
           }
-          if(sperso.getPosition().y<=rs.getPosition().y){
-            sperso.move(0,-0.001);
-          }
-          else if(sperso.getPosition().y>rs.getPosition().y){
-            sperso.move(0,0.001);
-          }
-        }
-        //std::cout<<"MUR"<<std::endl;
+        }//std::cout<<"MUR"<<std::endl;
       }
     }
   }
@@ -122,4 +125,7 @@ int Entite::gettaillet(){
 Tir* Entite::getTir(int i){
 
   return tirs.get(i);
+}
+int Entite::getvie(){
+  return vie;
 }
