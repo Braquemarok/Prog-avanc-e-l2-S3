@@ -13,6 +13,19 @@ Joueur::Joueur() : Entite(){
   sperso.setTextureRect(sf::IntRect(0, 0, 64, 64));
   sperso.setPosition(256, 128);
 }
+Joueur::Joueur(int vie) : Entite(vie){
+
+  arme = "";
+  sens = 0;
+
+  if (!perso.loadFromFile("Sprites/sprite.png"))
+    std::cout << "erreur" << std::endl;
+
+  perso.setSmooth(true);
+  sperso.setTexture(perso);
+  sperso.setTextureRect(sf::IntRect(0, 0, 64, 64));
+  sperso.setPosition(256, 128);
+}
 
 //action du joueur
 void Joueur::actions(int clock, int z, int t) {

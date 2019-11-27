@@ -14,6 +14,7 @@ class Entite
 public:
 
 	Entite() ;
+	Entite(int v) ;
 	bool mort() const ;
 	int getdegat();
 	//detection collision plus degat si vrai
@@ -39,7 +40,7 @@ protected:
 	sf::Sprite sperso;
 	int vie;
 	int degats;
-  	int x = 0;
+  int x = 0;
 	int y=96;
 	int sens;
 	Liste_tir tirs;

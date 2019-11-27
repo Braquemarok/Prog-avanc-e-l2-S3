@@ -9,20 +9,23 @@ class Menu
 {
 public:
 
-  Menu();
-  void handleMenu();
+  Menu(int x, int y);
+  virtual void handleMenu();
   bool isMenuOver();
   sf::Text getText(int i);
+  sf::Sprite getfond();
   void setMenu();
   int getOpt();
 
-private:
+protected:
 
   bool over=false;
   sf::Text text[4];
   sf::Font font;
   int option=0;
-
+  sf::Clock* clock;
+  sf::Texture fond;
+  sf::Sprite sfond;
 };
 
 #endif

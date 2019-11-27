@@ -35,6 +35,41 @@ World::World(){
 
 }
 
+World::World(string s){
+
+  vector<int> lv = lecteur("Maps/lv1.txt");
+  vector<int> sav = lecteur(s);
+  int sv = sav[0];
+  j = new Joueur(sv);
+  viej = new Vie();
+  gameover = false;
+  nbmonstre = lv[0];
+
+  if(lv[0]<0 || lv[1]<=0 || lv[2]<=0){
+    throw string("ERREUR NB MONSTRE INVALIDE");
+  }
+
+  for( int i = 0 ; i < nbmonstre ; i++ ){
+
+    m.ajouter(new Monstre(i*32,i*32));
+  }
+
+  const int nbtile = lv[1]*lv[2];
+
+  for( int i = 0 ; i < nbtile ; i++ ){
+
+    if(lv[i+3]<0 || lv[i+3]>4){
+      throw string("ERREUR TILESET ERRONE");
+    }
+
+    level[i]=lv[i+3];
+  }
+
+  if (!map.load("Sprites/texture.png", sf::Vector2u(64, 64), level, lv[1], lv[2]))
+    cout << "erreur map" << endl;
+
+}
+
 void World::handlevent(int clock, int x, int y){
   viej->handlevie(j->getvie());
   j->actions(clock, x, y);
@@ -107,4 +142,7 @@ int World::je(){
 bool World::isgameover(){
 
   return gameover;
+}
+Joueur* World::getPlayer(){
+  return j;
 }

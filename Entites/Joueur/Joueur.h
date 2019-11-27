@@ -8,6 +8,7 @@ class Joueur : public Entite
 public:
 	//constructeur
 	Joueur();
+	Joueur(int vie);
 
 	//action du joueur
 	void actions(int clock, int z, int t);

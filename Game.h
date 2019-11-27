@@ -2,9 +2,13 @@
 #define DEF_G
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "World.h"
-#include "Menu.h"
+#include "Menu/Menu.h"
+#include "Menu/MainMun.h"
+#include "Menu/Ptmenu.h"
+#include "Save.h"
 
 class Game
 {
@@ -13,11 +17,12 @@ public:
   Game();
   void play();
   void draw();
-  void drawm();
+  void drawm(Menu* mm);
 
 private:
   World* world;
-  Menu menu;
+  Menu* menu;
+  Menu* mmenu;
 	sf::RenderWindow window;
 
 };

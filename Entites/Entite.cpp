@@ -5,6 +5,11 @@ Entite::Entite() {
   vie = 2000;
   degats = 3;
 }
+Entite::Entite(int v) {
+
+  vie = v;
+  degats = 3;
+}
 
 bool Entite::mort() const {
 
