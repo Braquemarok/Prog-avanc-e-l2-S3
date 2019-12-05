@@ -47,7 +47,7 @@ void Liste_tir::ajouter( Tir* t ){
   }
 
   taille++;
-} 
+}
 
 /**
  * \brief Retourne le tir à la case i de la liste
@@ -70,7 +70,7 @@ Tir* Liste_tir::get( int i ){
     i--;
   }
 
-  return lvar->premier;  
+  return lvar->premier;
 }
 
 /**
@@ -115,15 +115,16 @@ void Liste_tir::supprimer( int i ){
 
   //Si c'est le premier élément que l'on veut supprimer
   if ( suppr == list ){
-
     list = list->suivant;
     //aucune sauvegarde d'élément précèdent à effectuer, on libère la liste temporaire
     tmp = NULL;
     delete tmp;
   }
 
+  delete suppr->premier;
+
   delete suppr;
-    
+
   taille--;
 }
 
@@ -156,7 +157,7 @@ void Liste_tir::free(){
 void Liste_tir::to_string(){
 
   if ( list != NULL ){
-    
+
     cout << "[ ";
 
     lvar = list;
@@ -177,4 +178,8 @@ void Liste_tir::to_string(){
 
     cout << "Liste vide\n";
   }
+}
+
+Liste_tir::~Liste_tir(){
+  free();
 }

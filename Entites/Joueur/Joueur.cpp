@@ -5,7 +5,7 @@ Joueur::Joueur() : Entite(){
   arme = "";
   sens = 0;
 
-  if (!perso.loadFromFile("Sprites/sprite.png"))
+  if (!perso.loadFromFile("Sprites/OldTextures/sprite.png"))
     std::cout << "erreur" << std::endl;
 
   perso.setSmooth(true);
@@ -29,8 +29,6 @@ Joueur::Joueur(int vie) : Entite(vie){
 
 //action du joueur
 void Joueur::actions(int clock, int z, int t) {
-
-  Tir* tir;
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 
@@ -84,13 +82,11 @@ void Joueur::actions(int clock, int z, int t) {
   }
   if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && clock%200<=17) {
     //action de tir
-    tir= new Tir1(sperso.getPosition().x, sperso.getPosition().y, z,t);
-    tirs.ajouter(tir);
+    tirs.ajouter(new Tir1(sperso.getPosition().x, sperso.getPosition().y, z,t));
   }
   if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && clock%200<=17) {
     //action de tir
-    tir= new Tir2(sperso.getPosition().x, sperso.getPosition().y, z,t);
-    tirs.ajouter(tir);
+    tirs.ajouter(new Tir2(sperso.getPosition().x, sperso.getPosition().y, z,t));
   }
   for( int i = 0; i < tirs.size() ; i++ ){
 

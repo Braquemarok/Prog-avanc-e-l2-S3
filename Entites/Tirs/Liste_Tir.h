@@ -36,8 +36,9 @@ class Liste_tir{
     Tir* get( int i );
     int size();
     void supprimer( int i );
-    void free();    
+    void free();
     void to_string();
+    ~Liste_tir();
 
 };
 

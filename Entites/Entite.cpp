@@ -59,7 +59,7 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
             if(sperso.getPosition().x<=rs.getPosition().x){
               sperso.move(-0.1,0);
             }
-            else if(sperso.getPosition().x>rs.getPosition().x){
+            else{
               sperso.move(0.1,0);
             }
           }
@@ -67,7 +67,7 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
             if(sperso.getPosition().y<=rs.getPosition().y){
               sperso.move(0,-0.1);
             }
-            else if(sperso.getPosition().y>rs.getPosition().y){
+            else{
               sperso.move(0,0.1);
             }
           }

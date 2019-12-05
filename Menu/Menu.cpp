@@ -5,7 +5,7 @@ Menu::Menu(int x, int y){
   if (!font.loadFromFile("Font/O.ttf")){
       std::cout<< "erreur ttf"<<std::endl;
   }
-  if(!fond.loadFromFile("Sprites/fond.jpg"))
+  if(!fond.loadFromFile("Sprites/OldTextures/fond.jpg"))
   {
     std::cout<< "erreur Image inexistante"<<std::endl;
   }

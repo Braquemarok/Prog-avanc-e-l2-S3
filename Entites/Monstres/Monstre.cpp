@@ -2,7 +2,7 @@
 
 Monstre::Monstre(int x, int y) : Entite() {
   vie=1;
-  if (!perso.loadFromFile("Sprites/monster1.png")) {
+  if (!perso.loadFromFile("Sprites/OldTextures/monster1.png")) {
     std::cout << "erreur" << std::endl;
   }
   perso.setSmooth(true);

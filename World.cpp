@@ -30,7 +30,7 @@ World::World(){
     level[i]=lv[i+3];
   }
 
-  if (!map.load("Sprites/texture.png", sf::Vector2u(64, 64), level, lv[1], lv[2]))
+  if (!map.load("Sprites/OldTextures/texture.png", sf::Vector2u(64, 64), level, lv[1], lv[2]))
     cout << "erreur map" << endl;
 
 }
@@ -145,4 +145,8 @@ bool World::isgameover(){
 }
 Joueur* World::getPlayer(){
   return j;
+}
+World::~World(){
+  delete j;
+  delete viej;
 }

@@ -26,6 +26,7 @@ public:
   int je();
   bool isgameover();
   Joueur* getPlayer();
+  ~World();
 
 private:
 

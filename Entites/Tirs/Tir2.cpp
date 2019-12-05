@@ -1,7 +1,7 @@
 #include "Tir2.h"
 
 Tir2::Tir2(int x, int y, int z, int v) : Tir(z, v){
-  if (!tir.loadFromFile("Sprites/fireball.png")) {
+  if (!tir.loadFromFile("Sprites/OldTextures/fireball.png")) {
     std::cout << "erreur" << std::endl;
   }
   tir.setSmooth(true);

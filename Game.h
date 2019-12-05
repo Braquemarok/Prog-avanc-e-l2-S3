@@ -18,6 +18,7 @@ public:
   void play();
   void draw();
   void drawm(Menu* mm);
+  ~Game();
 
 private:
   World* world;

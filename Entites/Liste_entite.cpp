@@ -47,7 +47,7 @@ void Liste_entite::ajouter( Entite* e ){
   }
 
   taille++;
-} 
+}
 
 /**
  * \brief Retourne l'entité à la case i de la liste
@@ -71,7 +71,7 @@ Entite* Liste_entite::get( int i ){
     i--;
   }
 
-  return lvar->premier;  
+  return lvar->premier;
 }
 
 /**
@@ -116,16 +116,17 @@ void Liste_entite::supprimer( int i ){
 
   //Si c'est le premier élément que l'on veut supprimer
   if ( suppr == list ){
-
     list = list->suivant;
     //aucune sauvegarde d'élément précèdent à effectuer, on libère la liste temporaire
     tmp = NULL;
     delete tmp;
   }
 
+  delete suppr->premier;
+
   delete suppr;
 
-  taille--;    
+  taille--;
 }
 
 /**
@@ -157,7 +158,7 @@ void Liste_entite::free(){
 void Liste_entite::to_string(){
 
   if ( list != NULL ){
-    
+
     cout << "[ ";
 
     lvar = list;
@@ -178,4 +179,7 @@ void Liste_entite::to_string(){
 
     cout << "Liste vide\n";
   }
+}
+Liste_entite::~Liste_entite(){
+  free();
 }
