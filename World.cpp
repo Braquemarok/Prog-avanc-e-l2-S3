@@ -66,14 +66,14 @@ World::World(string s){
 
 }
 
-void World::handlevent(int clock, int x, int y){
+void World::handlevent(int x, int y){
   viej->handlevie(j->getvie());
-  j->actions(clock, x, y);
+  j->actions(x, y);
   j->collision(sf::Vector2u(64, 64), level, length, height);
 
   for( int i = 0; i < m.size() ; i++ ){
 
-    m.get(i)->actions(j, clock);
+    m.get(i)->actions(j);
   }
 
   for( int i = 0 ; i < m.size() ; i++ ){
@@ -148,8 +148,8 @@ int World::geth(){
 int World::getl(){
   return length;
 }
-int* World::getlv(){
-  return level;
+int World::getlv(int i){
+  return level[i];
 }
 World::~World(){
   delete j;

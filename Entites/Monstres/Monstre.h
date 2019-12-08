@@ -9,6 +9,6 @@ public:
 
 	Monstre(int x, int y);
 	//action monstre en fonction du joueur
-	void actions(Entite* j, int clock);
+	void actions(Entite* j);
 };
 #endif

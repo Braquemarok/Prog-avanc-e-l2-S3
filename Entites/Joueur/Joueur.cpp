@@ -13,7 +13,7 @@ Joueur::Joueur() : Entite(){
   sperso.setTextureRect(sf::IntRect(0, 0, 64, 64));
   sperso.setPosition(256, 128);
 }
-Joueur::Joueur(int x, int y) : Entite(vie){
+Joueur::Joueur(int x, int y) : Entite(){
 
   arme = "";
   sens = 0;
@@ -28,7 +28,7 @@ Joueur::Joueur(int x, int y) : Entite(vie){
 }
 
 //action du joueur
-void Joueur::actions(int clock, int z, int t) {
+void Joueur::actions(int z, int t) {
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 
@@ -80,13 +80,15 @@ void Joueur::actions(int clock, int z, int t) {
     //sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
     animation(x);
   }
-  if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && clock%200<=17) {
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && clock->getElapsedTime().asMilliseconds()>=500) {
     //action de tir
     tirs.ajouter(new Tir1(sperso.getPosition().x, sperso.getPosition().y, z,t));
+    clock->restart();
   }
-  if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && clock%200<=17) {
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && clock->getElapsedTime().asMilliseconds()>=700) {
     //action de tir
     tirs.ajouter(new Tir2(sperso.getPosition().x, sperso.getPosition().y, z,t));
+    clock->restart();
   }
   for( int i = 0; i < tirs.size() ; i++ ){
 

@@ -22,10 +22,10 @@ public:
   void damage(sf::Sprite m, int x);
 	void collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
 	//action du joueur
-  virtual void actions(int clock);
-	virtual void actions(int clock, int z, int t);
+  virtual void actions();
+	virtual void actions( int z, int t);
   //action monstre en fonction du joueur
-	virtual void actions(Entite* j, int clock);
+	virtual void actions(Entite* j);
 
 	//getters
   sf::Sprite getEntite();
@@ -33,6 +33,7 @@ public:
 	int gettaillet();
 	Tir* getTir(int i);
 	int getvie();
+	~Entite();
 
 protected:
 
@@ -43,6 +44,7 @@ protected:
   int x = 0;
 	int y=96;
 	int sens;
+	sf::Clock* clock;
 	List<Tir> tirs;
 
 };

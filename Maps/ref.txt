@@ -1,0 +1,1 @@
+longueur = 24, largeur = 13

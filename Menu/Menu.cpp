@@ -41,3 +41,6 @@ void Menu::setMenu(){
 int Menu::getOpt(){
   return option;
 }
+Menu::~Menu(){
+  delete clock;
+}

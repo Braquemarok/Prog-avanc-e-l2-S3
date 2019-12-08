@@ -8,15 +8,12 @@ void writer(World* world){
       file << "monstre : x="+std::to_string((int)world->sm(i).getPosition().x)+" y="+std::to_string((int)world->sm(i).getPosition().y)+"\n";
     }
     file << "joueur : x="+std::to_string((int)world->sp().getPosition().x)+" y="+std::to_string((int)world->sp().getPosition().y)+"\n";
-    int* copy= new int[world->getl()*world->geth()];
-    copy=world->getlv();
     file << "longueur = "+std::to_string(world->getl())+" hauteur = "+std::to_string(world->geth())+"\n";
     string s="lv ={";
     for(int i=0; i<world->geth()*world->getl(); i++){
-      s+=std::to_string(copy[i])+",";
+      s+=std::to_string(world->getlv(i))+",";
     }
     s+="}";
     file<<s;
     file.close();
-    delete[] copy;
 }

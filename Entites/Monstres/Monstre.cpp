@@ -12,7 +12,7 @@ Monstre::Monstre(int x, int y) : Entite() {
 
 }
 //action monstre en fonction du joueur
-void Monstre::actions(Entite* j, int clock) {
+void Monstre::actions(Entite* j) {
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
     sperso.move(0, -3);
     y=96;

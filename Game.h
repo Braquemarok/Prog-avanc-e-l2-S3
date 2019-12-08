@@ -8,6 +8,7 @@
 #include "Menu/Menu.h"
 #include "Menu/MainMun.h"
 #include "Menu/Ptmenu.h"
+#include "Menu/Lvend.h"
 #include "Save.h"
 
 class Game

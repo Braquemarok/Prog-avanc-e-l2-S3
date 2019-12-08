@@ -11,7 +11,7 @@ public:
 	Joueur(int x, int y);
 
 	//action du joueur
-	void actions(int clock, int z, int t);
+	void actions( int z, int t);
 
 private:
 

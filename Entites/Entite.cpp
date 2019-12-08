@@ -4,11 +4,13 @@ Entite::Entite() {
 
   vie = 2000;
   degats = 3;
+  clock = new sf::Clock();
 }
 Entite::Entite(int v) {
 
   vie = v;
   degats = 3;
+  clock = new sf::Clock();
 }
 
 bool Entite::mort() const {
@@ -77,14 +79,14 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
   }
 }
 //action du joueur
- void Entite::actions(int clock){
+ void Entite::actions(){
 
 }
-void Entite::actions(int clock, int z, int t){
+void Entite::actions( int z, int t){
 
 }
 //action monstre en fonction du joueur
- void Entite::actions(Entite* j, int clock){
+ void Entite::actions(Entite* j){
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);
@@ -133,4 +135,7 @@ Tir* Entite::getTir(int i){
 }
 int Entite::getvie(){
   return vie;
+}
+Entite::~Entite(){
+  delete clock;
 }

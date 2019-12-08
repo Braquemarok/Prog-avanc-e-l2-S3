@@ -15,7 +15,7 @@ public:
 
   World(int num);
   World(string s);
-  void handlevent(int clock, int x, int y);
+  void handlevent(int x, int y);
   sf::Sprite sm(int i);
   int nbm();
   sf::Sprite sp();
@@ -27,7 +27,7 @@ public:
   Joueur* getPlayer();
   int geth();
   int getl();
-  int* getlv();
+  int getlv(int i);
   ~World();
 
 private:
