@@ -13,12 +13,12 @@ Joueur::Joueur() : Entite(){
   sperso.setTextureRect(sf::IntRect(0, 0, 64, 64));
   sperso.setPosition(256, 128);
 }
-Joueur::Joueur(int vie) : Entite(vie){
+Joueur::Joueur(int x, int y) : Entite(vie){
 
   arme = "";
   sens = 0;
 
-  if (!perso.loadFromFile("Sprites/sprite.png"))
+  if (!perso.loadFromFile("Sprites/Joueur/player.png"))
     std::cout << "erreur" << std::endl;
 
   perso.setSmooth(true);

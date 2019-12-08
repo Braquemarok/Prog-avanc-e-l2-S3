@@ -4,10 +4,10 @@
 #include <fstream>
 #include <iostream>
 #include <fstream>
-#include "Entites/Entite.h"
+#include "World.h"
 
 using namespace std;
 
-void writer(Entite* e);
+void writer(World* world);
 
 #endif

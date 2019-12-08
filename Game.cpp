@@ -6,7 +6,7 @@ Game::Game(){
   window.setFramerateLimit(60);
   mmenu = new MainMun(window.getSize().x,window.getSize().y);
   menu = new Ptmenu(window.getSize().x,window.getSize().y);
-  world = new World();
+  world = new World(1);
 }
 void Game::play(){
   int deb=0;
@@ -27,14 +27,14 @@ void Game::play(){
     }
     if((mmenu->getOpt()==0 || mmenu->getOpt()==2) && deb==0){
       delete world;
-      world = new World();
+      world = new World(1);
       deb++;
     }
     else if(mmenu->getOpt()==1 && deb==0){
-      ifstream fichier("SAVE/save.txt");
+      ifstream fichier("Save/save.txt");
       if(!fichier.fail()){
         delete world;
-        world = new World("SAVE/save.txt");
+        world = new World("Save/save.txt");
         deb++;
       }
       else{
@@ -48,13 +48,13 @@ void Game::play(){
       }
       if(menu->getOpt()==1){
         delete world;
-        world = new World();
+        world = new World(1);
       }
       if(menu->getOpt()==2){
         delete mmenu;
         mmenu = new MainMun(window.getSize().x,window.getSize().y);
         deb=0;
-        writer(world->getPlayer());
+        writer(world);
       }
       menu->setMenu();
     }

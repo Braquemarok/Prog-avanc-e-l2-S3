@@ -25,7 +25,7 @@ void Tir::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width,
 
   for(int i=0; i<width; i++){
     for(int j=0; j<height; j++){
-      if(tiles[i + j * width]>=3){
+      if(tiles[i + j * width]<3){
         rs.setPosition(sf::Vector2f(i * tileSize.x, j * tileSize.y));
         //std::cout<<rs.getPosition().y<<std::endl;
       }

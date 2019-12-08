@@ -13,7 +13,7 @@ class World{
 
 public:
 
-  World();
+  World(int num);
   World(string s);
   void handlevent(int clock, int x, int y);
   sf::Sprite sm(int i);
@@ -25,6 +25,9 @@ public:
   int je();
   bool isgameover();
   Joueur* getPlayer();
+  int geth();
+  int getl();
+  int* getlv();
   ~World();
 
 private:
@@ -34,7 +37,9 @@ private:
   List<Entite> m;
   int nbmonstre;
 	TileMap map;
-  int level[128];
+  int* level;
+  int height;
+  int length;
   bool gameover;
 };
 
