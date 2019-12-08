@@ -5,7 +5,7 @@
 #include "Tirs/Tir.h"
 #include "Tirs/Tir1.h"
 #include "Tirs/Tir2.h"
-#include "Tirs/Liste_Tir.h"
+#include "../List.cpp"
 #include "Animation.h"
 #include "Tirs/mth.h"
 
@@ -43,7 +43,7 @@ protected:
   int x = 0;
 	int y=96;
 	int sens;
-	Liste_tir tirs;
+	List<Tir> tirs;
 
 };
 #endif

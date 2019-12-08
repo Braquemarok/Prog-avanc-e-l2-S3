@@ -1,12 +1,12 @@
 #include "Tir2.h"
 
 Tir2::Tir2(int x, int y, int z, int v) : Tir(z, v){
-  if (!tir.loadFromFile("Sprites/OldTextures/fireball.png")) {
+  if (!tir.loadFromFile("Sprites/projectiles.png")) {
     std::cout << "erreur" << std::endl;
   }
   tir.setSmooth(true);
   stir.setTexture(tir);
-  stir.setTextureRect(sf::IntRect(32, 0, 64, 64));
+  stir.setTextureRect(sf::IntRect( 16, 0, 16, 32 ));
   stir.setPosition(x, y);
   degats=10;
   longueur=500;

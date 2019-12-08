@@ -5,7 +5,6 @@
 #include "Entites/Joueur/Joueur.h"
 #include "Entites/Joueur/Vie.h"
 #include "Entites/Monstres/Monstre.h"
-#include "Entites/Liste_entite.h"
 #include "Sound.h"
 #include "Map.h"
 #include "Lecteur.h"
@@ -32,7 +31,7 @@ private:
 
 	Joueur* j;
   Vie* viej;
-	Liste_entite m;
+  List<Entite> m;
   int nbmonstre;
 	TileMap map;
   int level[128];

@@ -5,7 +5,7 @@ Joueur::Joueur() : Entite(){
   arme = "";
   sens = 0;
 
-  if (!perso.loadFromFile("Sprites/OldTextures/sprite.png"))
+  if (!perso.loadFromFile("Sprites/Joueur/player.png"))
     std::cout << "erreur" << std::endl;
 
   perso.setSmooth(true);

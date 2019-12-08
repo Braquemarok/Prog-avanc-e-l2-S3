@@ -1,14 +1,16 @@
-#include "Liste_entite.h"
+#include "List.h"
 
 
 using namespace std;
+
 
 // Constructeur
 
 /**
  * \brief Construit une liste d'entité vide
 */
-Liste_entite::Liste_entite(){
+template <class T>
+List<T>::List(){
 
   list = NULL;
   lvar = NULL;
@@ -21,10 +23,11 @@ Liste_entite::Liste_entite(){
  * \brief Ajoute une entité dans la liste
  * \param e une entité
 */
-void Liste_entite::ajouter( Entite* e ){
+template <class T>
+void List<T>::ajouter( T* e ){
 
   //On créer la liste à insérer dans la liste principale
-  liste res = new Liste;
+  Liste<T>* res = new Liste<T>;
   res->suivant = NULL;
   res->premier = e;
 
@@ -54,7 +57,8 @@ void Liste_entite::ajouter( Entite* e ){
  * \param i la position de l'entité dans la liste
  * \return L'entité à la position i
 */
-Entite* Liste_entite::get( int i ){
+template <class T>
+T* List<T>::get( int i ){
 
   if ( list == NULL ){
 
@@ -78,7 +82,8 @@ Entite* Liste_entite::get( int i ){
  * \brief Retourne la taille de la liste
  * \return La taille de la liste
 */
-int Liste_entite::size(){
+template <class T>
+int List<T>::size(){
 
   return taille;
 }
@@ -87,7 +92,8 @@ int Liste_entite::size(){
  * \brief Supprime l'entité à la case i de la liste
  * \param i la position de l'entité dans la liste
 */
-void Liste_entite::supprimer( int i ){
+template <class T>
+void List<T>::supprimer( int i ){
 
   if ( list == NULL ){
 
@@ -96,8 +102,8 @@ void Liste_entite::supprimer( int i ){
   }
 
   lvar = list;
-  liste tmp = new Liste;
-  liste suppr = new Liste;
+  Liste<T>* tmp = new Liste<T>;
+  Liste<T>* suppr = new Liste<T>;
 
   //On cherche à atteindre la position i
   while(( i > 0 )&&( lvar->suivant != NULL )){
@@ -133,7 +139,8 @@ void Liste_entite::supprimer( int i ){
  * \brief Libère la liste L de la mémoire
  * \param L la liste à libérer
 */
-void Liste_entite::liberer_liste( liste L ){
+template <class T>
+void List<T>::liberer_liste( Liste<T> L ){
 
   if ( L != NULL ){
 
@@ -145,7 +152,8 @@ void Liste_entite::liberer_liste( liste L ){
 /**
  * \brief Libère toutes les listes de l'objet
 */
-void Liste_entite::free(){
+template <class T>
+void List<T>::free(){
 
   liberer_liste(list);
   liberer_liste(lvar);
@@ -155,7 +163,8 @@ void Liste_entite::free(){
 /**
  * \brief Affiche la liste d'entité
 */
-void Liste_entite::to_string(){
+template <class T>
+void List<T>::to_string(){
 
   if ( list != NULL ){
 
@@ -180,6 +189,4 @@ void Liste_entite::to_string(){
     cout << "Liste vide\n";
   }
 }
-Liste_entite::~Liste_entite(){
-  free();
-}
+

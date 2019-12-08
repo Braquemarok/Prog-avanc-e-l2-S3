@@ -2,12 +2,12 @@
 
 Monstre::Monstre(int x, int y) : Entite() {
   vie=1;
-  if (!perso.loadFromFile("Sprites/OldTextures/monster1.png")) {
+  if (!perso.loadFromFile("Sprites/Mobs/tank4.png")) {
     std::cout << "erreur" << std::endl;
   }
   perso.setSmooth(true);
   sperso.setTexture(perso);
-  sperso.setTextureRect(sf::IntRect(32, 0, 64, 64));
+  sperso.setTextureRect(sf::IntRect( 0, 0, 64, 64 ));
   sperso.setPosition(x, y);
 
 }
