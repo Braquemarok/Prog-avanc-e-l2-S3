@@ -60,17 +60,21 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
           if(mur(sperso.getPosition().x,rs.getPosition().x)>mur(sperso.getPosition().y,rs.getPosition().y)){
             if(sperso.getPosition().x<=rs.getPosition().x){
               sperso.move(-0.1,0);
+              scanon.move(-0.1,0);
             }
             else{
               sperso.move(0.1,0);
+              scanon.move(0.1,0);
             }
           }
           else{
             if(sperso.getPosition().y<=rs.getPosition().y){
               sperso.move(0,-0.1);
+              scanon.move(0,-0.1);
             }
             else{
               sperso.move(0,0.1);
+              scanon.move(0,0.1);
             }
           }
         }//std::cout<<"MUR"<<std::endl;
@@ -85,31 +89,23 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
 void Entite::actions( int z, int t){
 
 }
-//action monstre en fonction du joueur
+
  void Entite::actions(Entite* j){
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);
-    sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
   }
   if (j->getEntite().getPosition().y > sperso.getPosition().y) {
 
     sperso.move(0, 3);
-    sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
   }
   if (j->getEntite().getPosition().x < sperso.getPosition().x) {
 
     sperso.move(-3, 0);
-    sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
   }
   if (j->getEntite().getPosition().x > sperso.getPosition().x) {
 
     sperso.move(3, 0);
-    sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
   }
 }
 
@@ -117,6 +113,11 @@ void Entite::actions( int z, int t){
 sf::Sprite Entite::getEntite(){
 
   return sperso;
+}
+
+sf::Sprite Entite::getCanon(){
+
+  return scanon;
 }
 
 sf::Sprite Entite::getstir(int i){
@@ -133,9 +134,13 @@ Tir* Entite::getTir(int i){
 
   return tirs.get(i);
 }
+
 int Entite::getvie(){
+
   return vie;
 }
+
 Entite::~Entite(){
+
   delete clock;
 }

@@ -16,9 +16,10 @@ public:
   World(int num);
   World(string s);
   void handlevent(int x, int y);
-  sf::Sprite sm(int i);
-  int nbm();
-  sf::Sprite sp();
+  sf::Sprite spriteMob(int i);
+  int nbMobs();
+  sf::Sprite spritePlayer();
+  sf::Sprite spritePcanon();
   sf::Sprite st(int i);
   sf::Text jvie();
   TileMap getMap();

@@ -19,16 +19,17 @@ public:
 	int getdegat();
 	//detection collision plus degat si vrai
 	void damage(Tir* m, int x);
-  void damage(sf::Sprite m, int x);
+  	void damage(sf::Sprite m, int x);
 	void collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
 	//action du joueur
-  virtual void actions();
+  	virtual void actions();
 	virtual void actions( int z, int t);
-  //action monstre en fonction du joueur
+  	//action monstre en fonction du joueur
 	virtual void actions(Entite* j);
 
 	//getters
-  sf::Sprite getEntite();
+  	sf::Sprite getEntite();
+	sf::Sprite getCanon();
 	sf::Sprite getstir(int i);
 	int gettaillet();
 	Tir* getTir(int i);
@@ -38,11 +39,14 @@ public:
 protected:
 
 	sf::Texture perso;
+	sf::Texture canon;
 	sf::Sprite sperso;
+	sf::Sprite scanon;
 	int vie;
 	int degats;
-  int x = 0;
-	int y=96;
+  	int x = 0;
+	int y = 96;
+	int anim = 0;
 	int sens;
 	sf::Clock* clock;
 	List<Tir> tirs;

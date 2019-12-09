@@ -15,8 +15,5 @@ public:
 
 private:
 
-	int armure;
-	std::string arme;
-
 };
 #endif

@@ -16,25 +16,21 @@ void Monstre::actions(Entite* j) {
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
     sperso.move(0, -3);
     y=96;
-    //sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
+ 
   }
   if (j->getEntite().getPosition().y > sperso.getPosition().y) {
     sperso.move(0, 3);
     y=0;
-    //sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
+
   }
   if (j->getEntite().getPosition().x < sperso.getPosition().x) {
     sperso.move(-3, 0);
     y=32;
-    //sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
+
   }
   if (j->getEntite().getPosition().x > sperso.getPosition().x) {
     sperso.move(3, 0);
     y=64;
-    //sperso.setTextureRect(sf::IntRect(32 * x, y, 32, 32));
-    animation(x);
+  
   }
 }

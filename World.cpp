@@ -101,19 +101,24 @@ void World::handlevent(int x, int y){
   }
 }
 
-sf::Sprite World::sm(int i){
+sf::Sprite World::spriteMob(int i){
 
   return m.get(i)->getEntite();
 }
 
-int World::nbm(){
+int World::nbMobs(){
 
   return m.size();
 }
 
-sf::Sprite World::sp(){
+sf::Sprite World::spritePlayer(){
 
   return j->getEntite();
+}
+
+sf::Sprite World::spritePcanon(){
+
+  return j->getCanon();
 }
 
 sf::Sprite World::st(int i){

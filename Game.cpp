@@ -78,35 +78,54 @@ void Game::play(){
         delete lvend;
       }
     }
+
     else{
+
       world->handlevent(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+      
       draw();
-      if(world->nbm()==0){
+
+      if(world->nbMobs()==0){
+
         lv++;
-        if(lv>4){
-          lv=1;
-        }
-        state=2;
+
+        if(lv > 4)
+          lv = 1;
+
+        state = 2;
+
         delete world;
+
         world = new World(lv);
-        lvend=new Lvend(window.getSize().x,window.getSize().y);
+
+        lvend = new Lvend(window.getSize().x,window.getSize().y);
       }
     }
-    if(world->isgameover()){
-      state=0;
-      lv=1;
+
+    if( world->isgameover()){
+
+      state = 0;
+      lv = 1;
     }
   }
 }
 void Game::draw(){
+
+  //On dessine tous les sprites dans la fenetre
+
   window.clear();
   window.draw(world->getMap());
-  window.draw(world->sp());
+  window.draw(world->spritePlayer());
+  window.draw(world->spritePcanon());
   window.draw(world->jvie());
-  for(int i=0; i<world->nbm();i++){
-    window.draw(world->sm(i));
+
+  for( int i = 0 ; i < world->nbMobs() ; i++ ){
+
+    window.draw(world->spriteMob(i));
   }
-  for(int i=0; i<world->je();i++){
+
+  for( int i = 0 ; i < world->je() ; i++ ){
+
     window.draw(world->st(i));
   }
   window.display();
