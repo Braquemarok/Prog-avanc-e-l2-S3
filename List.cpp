@@ -102,8 +102,8 @@ void List<T>::supprimer( int i ){
   }
 
   lvar = list;
-  Liste<T>* tmp = new Liste<T>;
-  Liste<T>* suppr = new Liste<T>;
+  Liste<T>* tmp = list;
+  Liste<T>* suppr = list;
 
   //On cherche à atteindre la position i
   while(( i > 0 )&&( lvar->suivant != NULL )){
@@ -129,7 +129,6 @@ void List<T>::supprimer( int i ){
   }
 
   delete suppr->premier;
-
   delete suppr;
 
   taille--;
@@ -140,7 +139,7 @@ void List<T>::supprimer( int i ){
  * \param L la liste à libérer
 */
 template <class T>
-void List<T>::liberer_liste( Liste<T> L ){
+void List<T>::liberer_liste( Liste<T>* L ){
 
   if ( L != NULL ){
 
@@ -189,4 +188,3 @@ void List<T>::to_string(){
     cout << "Liste vide\n";
   }
 }
-

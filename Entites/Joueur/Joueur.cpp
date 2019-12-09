@@ -51,7 +51,7 @@ void Joueur::actions(int z, int t) {
     anim++;
 
     if ( anim > 3) {
-    
+
       anim = 0;
     }
 
@@ -66,7 +66,7 @@ void Joueur::actions(int z, int t) {
     anim++;
 
     if ( anim > 3) {
-    
+
       anim = 0;
     }
     animation( sperso, anim, sens );
@@ -80,7 +80,7 @@ void Joueur::actions(int z, int t) {
     anim++;
 
     if ( anim > 3) {
-    
+
       anim = 0;
     }
     animation( sperso, anim, sens );
@@ -92,9 +92,9 @@ void Joueur::actions(int z, int t) {
     scanon.move(0, 5);
     sens = 2;
     anim++;
-    
+
     if ( anim > 3) {
-    
+
       anim = 0;
     }
     animation( sperso, anim, sens );

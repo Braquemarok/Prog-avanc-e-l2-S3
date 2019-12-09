@@ -27,7 +27,7 @@ class List{
     //Taille de la liste principale
     int taille;
 
-    void liberer_liste( Liste<T> L );
+    void liberer_liste( Liste<T>* L );
 
     public:
 
