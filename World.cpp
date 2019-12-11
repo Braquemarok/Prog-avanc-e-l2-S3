@@ -6,7 +6,7 @@ World::World(int num){
 
   vector<int> lv = lecteur("Maps/lv"+to_string(num)+".txt");
   j = new Joueur();
-  viej = new Vie();
+  //viej = new Vie();
   gameover = false;
   nbmonstre = lv[0];
 
@@ -40,7 +40,6 @@ World::World(int num){
 World::World(string s){
   vector<int> sav = lecteur(s);
   j = new Joueur(sav[1+nbmonstre*2], sav[2+nbmonstre*2]);
-  viej = new Vie();
   gameover = false;
   nbmonstre = sav[0];
 
@@ -67,7 +66,8 @@ World::World(string s){
 }
 
 void World::handlevent(int x, int y){
-  viej->handlevie(j->getvie());
+
+
   j->actions(x, y);
   j->collision(sf::Vector2u(64, 64), level, length, height);
 
@@ -125,10 +125,6 @@ sf::Sprite World::st(int i){
 
   return j->getstir(i);
 }
-sf::Text World::jvie(){
-
-  return viej->getText();
-}
 
 TileMap World::getMap(){
 
@@ -158,6 +154,5 @@ int World::getlv(int i){
 }
 World::~World(){
   delete j;
-  delete viej;
   delete[] level;
 }

@@ -2,20 +2,15 @@
 
 Entite::Entite() {
 
-  vie = 2000;
-  degats = 3;
-  clock = new sf::Clock();
-}
-Entite::Entite(int v) {
-
-  vie = v;
+  anim = 0;
+  alive = true;
   degats = 3;
   clock = new sf::Clock();
 }
 
 bool Entite::mort() const {
 
-  return vie <= 0;
+  return !alive;
 }
 
 int Entite::getdegat(){
@@ -31,7 +26,7 @@ void Entite::damage( Tir* m, int degats ){
 
   if (boundingBox.intersects(otherBox)){
 
-    vie -= degats;
+    alive = false;
     m->setdead();
   }
 }
@@ -42,7 +37,7 @@ void Entite::damage( sf::Sprite m, int degats ){
   sf::FloatRect otherBox = m.getGlobalBounds();
 
   if (boundingBox.intersects(otherBox))
-    vie -= degats;
+    alive = false;
 }
 void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
   sf::RectangleShape rs;
@@ -135,9 +130,9 @@ Tir* Entite::getTir(int i){
   return tirs.get(i);
 }
 
-int Entite::getvie(){
+int Entite::getAlive(){
 
-  return vie;
+  return alive;
 }
 
 Entite::~Entite(){

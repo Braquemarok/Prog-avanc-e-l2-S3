@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include "Entites/Joueur/Joueur.h"
-#include "Entites/Joueur/Vie.h"
+//#include "Entites/Joueur/Vie.h"
 #include "Entites/Monstres/Monstre.h"
 #include "Sound.h"
 #include "Map.h"
@@ -34,7 +34,6 @@ public:
 private:
 
 	Joueur* j;
-  Vie* viej;
   List<Entite> m;
   int nbmonstre;
 	TileMap map;

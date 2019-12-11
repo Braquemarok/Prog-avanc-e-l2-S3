@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-void animation( sf::Sprite sprite, int anim, int sens );
-void rotation( sf::Sprite canon );
+void animation( sf::Sprite* sprite, int* anim, int sens );
+void rotation( sf::Sprite* canon );
 
 #endif

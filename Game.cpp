@@ -117,7 +117,6 @@ void Game::draw(){
   window.draw(world->getMap());
   window.draw(world->spritePlayer());
   window.draw(world->spritePcanon());
-  window.draw(world->jvie());
 
   for( int i = 0 ; i < world->nbMobs() ; i++ ){
 

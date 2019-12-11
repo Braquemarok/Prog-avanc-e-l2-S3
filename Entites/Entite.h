@@ -33,7 +33,7 @@ public:
 	sf::Sprite getstir(int i);
 	int gettaillet();
 	Tir* getTir(int i);
-	int getvie();
+	int getAlive();
 	~Entite();
 
 protected:
@@ -42,10 +42,8 @@ protected:
 	sf::Texture canon;
 	sf::Sprite sperso;
 	sf::Sprite scanon;
-	int vie;
+	bool alive;
 	int degats;
-  	int x = 0;
-	int y = 96;
 	int anim = 0;
 	int sens;
 	sf::Clock* clock;
