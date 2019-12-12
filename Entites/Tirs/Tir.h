@@ -17,6 +17,7 @@ public:
 	void setdead();
 	//getters
 	sf::Sprite getSprite();
+	sf::Sprite* getSTir();
 	bool done();
 
 protected:

@@ -7,6 +7,7 @@ Tir2::Tir2(int x, int y, int z, int v) : Tir(z, v){
   tir.setSmooth(true);
   stir.setTexture(tir);
   stir.setTextureRect(sf::IntRect( 16, 0, 16, 32 ));
+  stir.setOrigin(8, 16);
   stir.setPosition(x, y);
   degats=10;
   longueur=500;

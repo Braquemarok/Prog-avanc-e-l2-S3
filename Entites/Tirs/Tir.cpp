@@ -40,6 +40,12 @@ void Tir::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width,
 sf::Sprite Tir::getSprite(){
   return stir;
 }
+
+sf::Sprite* Tir::getSTir(){
+
+  return &stir;
+}
+
 bool Tir::done(){
   return ded;
 }
