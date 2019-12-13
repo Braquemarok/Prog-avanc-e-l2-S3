@@ -53,10 +53,7 @@ void Game::play(){
       drawm(menu);
       if(menu->isMenuOver()){
         state=3;
-        while(!menu->isMenuOver()){
-          menu->handleMenu();
-          drawm(menu);
-        }
+
         if(menu->getOpt()==1){
           delete world;
           world = new World(lv);
@@ -82,7 +79,7 @@ void Game::play(){
     else{
 
       world->handlevent(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
-      
+
       draw();
 
       if(world->nbMobs()==0){
@@ -116,19 +113,23 @@ void Game::draw(){
   window.clear();
   window.draw(world->getMap());
   window.draw(world->spritePlayer());
+  for( int i = 0 ; i < world->je() ; i++ ){
+
+    window.draw(world->st(i));
+  }
   window.draw(world->spritePcanon());
 
   for( int i = 0 ; i < world->nbMobs() ; i++ ){
 
     window.draw(world->spriteMob(i));
-  }
-
-  for( int i = 0 ; i < world->je() ; i++ ){
-
-    window.draw(world->st(i));
+    for(int j=0; j<world->me(i); j++){
+      window.draw(world->sm(i, j));
+    }
+    window.draw(world->spriteMcanon(i));
   }
   window.display();
 }
+
 void Game::drawm(Menu* mm){
   window.clear();
   window.draw(mm->getfond());

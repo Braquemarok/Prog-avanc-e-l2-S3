@@ -1,13 +1,13 @@
-#ifndef DEF_MST
-#define DEF_MST
+#ifndef DEF_MST3
+#define DEF_MST3
 
 #include "../Entite.h"
 
-class Monstre : public Entite
+class Monstre3 : public Entite
 {
 public:
 
-	Monstre(int x, int y);
+	Monstre3(int x, int y);
 	//action monstre en fonction du joueur
 	void actions(Entite* j, int h, int l);
 };

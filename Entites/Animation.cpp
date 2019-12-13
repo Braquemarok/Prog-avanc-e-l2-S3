@@ -3,12 +3,12 @@
 using namespace std;
 
 void animation( sf::Sprite* sprite, int* anim, int sens ){
-  
+
   sf::Sprite sprit = *sprite;
   int a = *anim;
 
   switch(sens){
-    
+
     case 0:
       sprit.setTextureRect(sf::IntRect(64 * a, 0, 64, 64));
     break;
@@ -25,11 +25,11 @@ void animation( sf::Sprite* sprite, int* anim, int sens ){
       sprit.setTextureRect(sf::IntRect(64 * a, 192, 64, 64));
     break;
   }
-  
+
   a++;
 
   if ( a > 3) {
-    
+
     a = 0;
   }
 
@@ -50,7 +50,9 @@ void rotation( sf::Sprite* canon, double cursorx, double cursory ){
     angle -= 180;
   }
 
+  //printf("%lf\n",angle);
+
   can.setRotation(angle);
-  
+
   *canon = can;
 }

@@ -10,26 +10,32 @@ World::World(int num){
   gameover = false;
   nbmonstre = lv[0];
 
-  if(lv[0]<0 || lv[1]<=0 || lv[2]<=0){
-    throw string("ERREUR NB MONSTRE INVALIDE");
-  }
-
   for( int i = 0 ; i < nbmonstre ; i++ ){
-
-    m.ajouter(new Monstre(lv[1+i],lv[2+i]));
+    if(lv[3+i*3]==1){
+      m.ajouter(new Monstre(lv[1+i*3],lv[2+i*3]));
+    }
+    if(lv[3+i*3]==2){
+      m.ajouter(new Monstre2(lv[1+i*3],lv[2+i*3]));
+    }
+    if(lv[3+i*3]==3){
+      m.ajouter(new Monstre3(lv[1+i*3],lv[2+i*3]));
+    }/*
+    if(lv[3+i*3]==4){
+      m.ajouter(new Monstre4(lv[1+i*3],lv[2+i*3]));
+    }*/
   }
 
-  const int nbtile = lv[1+nbmonstre*2]*lv[2+nbmonstre*2];
-  length = lv[1+nbmonstre*2];
-  height = lv[2+nbmonstre*2];
+  const int nbtile = lv[1+nbmonstre*3]*lv[2+nbmonstre*3];
+  length = lv[1+nbmonstre*3];
+  height = lv[2+nbmonstre*3];
   level = new int[nbtile];
   for( int i = 0 ; i < nbtile ; i++ ){
 
-    if(lv[i+3+nbmonstre*2]<0 || lv[i+3+nbmonstre*2]>16){
+    if(lv[i+3+nbmonstre*3]<0 || lv[i+3+nbmonstre*3]>16){
       throw string("ERREUR TILESET ERRONE");
     }
 
-    level[i]=lv[i+3+nbmonstre*2];
+    level[i]=lv[i+3+nbmonstre*3];
   }
 
   if (!map.load("Sprites/Map/tileset.png", sf::Vector2u(64, 64), level, length, height))
@@ -39,25 +45,35 @@ World::World(int num){
 
 World::World(string s){
   vector<int> sav = lecteur(s);
-  j = new Joueur(sav[1+nbmonstre*2], sav[2+nbmonstre*2]);
+  j = new Joueur(sav[1+nbmonstre*3], sav[2+nbmonstre*3]);
   gameover = false;
   nbmonstre = sav[0];
 
   for( int i = 0 ; i < nbmonstre ; i++ ){
-
-    m.ajouter(new Monstre(sav[1+i],sav[2+i]));
+    if(sav[3+i*3]==1){
+      m.ajouter(new Monstre(sav[1+i*3],sav[2+i*3]));
+    }
+    if(sav[3+i*3]==2){
+      m.ajouter(new Monstre2(sav[1+i*3],sav[2+i*3]));
+    }
+    if(sav[3+i*3]==3){
+      m.ajouter(new Monstre3(sav[1+i*3],sav[2+i*3]));
+    }/*
+    if(lv[3+i*3]==4){
+      m.ajouter(new Monstre4(sav[1+i*3],sav[2+i*3]));
+    }*/
   }
 
-  const int nbtile = sav[3+nbmonstre*2]*sav[4+nbmonstre*2];
-  length = sav[3+nbmonstre*2];
-  height = sav[4+nbmonstre*2];
+  const int nbtile = sav[3+nbmonstre*3]*sav[4+nbmonstre*3];
+  length = sav[3+nbmonstre*3];
+  height = sav[4+nbmonstre*3];
   level = new int[nbtile];
   for( int i = 0 ; i < nbtile ; i++ ){
-    if(sav[i+5+nbmonstre*2]<0 || sav[i+5+nbmonstre*2]>16){
+    if(sav[i+5+nbmonstre*3]<0 || sav[i+5+nbmonstre*3]>16){
       throw string("ERREUR TILESET ERRONE");
     }
 
-    level[i]=sav[i+5+nbmonstre*2];
+    level[i]=sav[i+5+nbmonstre*3];
   }
 
   if (!map.load("Sprites/Map/tileset.png", sf::Vector2u(64, 64), level, length, height))
@@ -73,7 +89,11 @@ void World::handlevent(int x, int y){
 
   for( int i = 0; i < m.size() ; i++ ){
 
-    m.get(i)->actions(j);
+    m.get(i)->actions(j, height, length);
+    m.get(i)->collision(sf::Vector2u(64, 64), level, length, height);
+    for(int j=i+1; j< m.size(); j++){
+      m.get(i)->collision(m.get(j)->getEntite());
+    }
   }
 
   for( int i = 0 ; i < m.size() ; i++ ){
@@ -87,12 +107,14 @@ void World::handlevent(int x, int y){
   }
 
   for( int i = 0 ; i < m.size() ; i++ ){
-    m.get(i)->collision(sf::Vector2u(64, 64), level, length, height);
     for( int k = 0 ; k < j->gettaillet() ; k++ ){
 
       m.get(i)->damage(j->getTir(k), j->getdegat());
     }
-
+    for(int k = 0; k < m.get(i)->gettaillet() ; k++){
+      j->damage(m.get(i)->getTir(k), m.get(i)->getdegat());
+      m.get(i)->getTir(k)->collision(sf::Vector2u(64, 64), level, length, height);
+    }
     if(m.get(i)->mort())
       m.supprimer(i);
   }
@@ -104,6 +126,10 @@ void World::handlevent(int x, int y){
 sf::Sprite World::spriteMob(int i){
 
   return m.get(i)->getEntite();
+}
+sf::Sprite World::spriteMcanon(int i){
+
+  return m.get(i)->getCanon();
 }
 
 int World::nbMobs(){
@@ -126,6 +152,11 @@ sf::Sprite World::st(int i){
   return j->getstir(i);
 }
 
+sf::Sprite World::sm(int i, int j){
+
+  return m.get(i)->getstir(j);
+}
+
 TileMap World::getMap(){
 
   return map;
@@ -134,6 +165,11 @@ TileMap World::getMap(){
 int World::je(){
 
   return j->gettaillet();
+}
+
+int World::me(int i){
+
+  return m.get(i)->gettaillet();
 }
 
 bool World::isgameover(){
@@ -151,6 +187,9 @@ int World::getl(){
 }
 int World::getlv(int i){
   return level[i];
+}
+int World::getMT(int i){
+  return m.get(i)->getType();
 }
 World::~World(){
   delete j;

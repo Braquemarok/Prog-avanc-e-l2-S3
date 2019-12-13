@@ -20,17 +20,15 @@ void Tir::actions(){
   }
 }
 void Tir::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
-  sf::RectangleShape rs;
-  rs.setScale(64,64);
-
   for(int i=0; i<width; i++){
     for(int j=0; j<height; j++){
       if(tiles[i + j * width]<3){
-        rs.setPosition(sf::Vector2f(i * tileSize.x, j * tileSize.y));
+        sf::FloatRect* r = new sf::FloatRect(i*64,j*64,64,64);
         //std::cout<<rs.getPosition().y<<std::endl;
-      }
-      if (stir.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || stir.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || stir.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || stir.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
-        setdead();
+        if (r->intersects(stir.getGlobalBounds())){
+          setdead();
+        }
+        delete r;
       }
     }
   }

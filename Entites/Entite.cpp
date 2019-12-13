@@ -40,39 +40,61 @@ void Entite::damage( sf::Sprite m, int degats ){
     alive = false;
 }
 void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
-  sf::RectangleShape rs;
-  rs.setScale(32,32);
-
   for(int i=0; i<width; i++){
     for(int j=0; j<height; j++){
       if(tiles[i + j * width]<3){
-        rs.setPosition(sf::Vector2f(i * tileSize.x, j * tileSize.y));
-        //std::cout<<rs.getPosition().x<<std::endl;
-        //std::cout<<rs.getPosition().y<<std::endl;
+        sf::FloatRect* r = new sf::FloatRect(i*64,j*64,64,64);
+        if (r->intersects(sperso.getGlobalBounds())){
+          while(r->intersects(sperso.getGlobalBounds())){
+            if(mur(sperso.getPosition().x,i*64)>mur(sperso.getPosition().y,j*64)){
+              if(sperso.getPosition().x<=i*64){
+                sperso.move(-0.1,0);
+                scanon.move(-0.1,0);
+              }
+              else{
+                sperso.move(0.1,0);
+                scanon.move(0.1,0);
+              }
+            }
+            else{
+              if(sperso.getPosition().y<=j*64){
+                sperso.move(0,-0.1);
+                scanon.move(0,-0.1);
+              }
+              else{
+                sperso.move(0,0.1);
+                scanon.move(0,0.1);
+              }
+            }
+          }//std::cout<<"MUR"<<std::endl;
+        }
+        delete r;
       }
-      if (sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
-        while(sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y+tileSize.y) || sperso.getGlobalBounds().contains(rs.getPosition().x+tileSize.x, rs.getPosition().y) || sperso.getGlobalBounds().contains(rs.getPosition().x, rs.getPosition().y+tileSize.y)){
-          if(mur(sperso.getPosition().x,rs.getPosition().x)>mur(sperso.getPosition().y,rs.getPosition().y)){
-            if(sperso.getPosition().x<=rs.getPosition().x){
-              sperso.move(-0.1,0);
-              scanon.move(-0.1,0);
-            }
-            else{
-              sperso.move(0.1,0);
-              scanon.move(0.1,0);
-            }
-          }
-          else{
-            if(sperso.getPosition().y<=rs.getPosition().y){
-              sperso.move(0,-0.1);
-              scanon.move(0,-0.1);
-            }
-            else{
-              sperso.move(0,0.1);
-              scanon.move(0,0.1);
-            }
-          }
-        }//std::cout<<"MUR"<<std::endl;
+    }
+  }
+}
+void Entite::collision( sf::Sprite m){
+  if (sperso.getGlobalBounds().intersects(m.getGlobalBounds())){
+    while(sperso.getGlobalBounds().intersects(m.getGlobalBounds())){
+      if(mur(sperso.getPosition().x,m.getPosition().x)>mur(sperso.getPosition().y,m.getPosition().y)){
+        if(sperso.getPosition().x<=m.getPosition().x){
+          sperso.move(-0.1,0);
+          scanon.move(-0.1,0);
+        }
+        else{
+          sperso.move(0.1,0);
+          scanon.move(0.1,0);
+        }
+      }
+      else{
+        if(sperso.getPosition().y<=m.getPosition().y){
+          sperso.move(0,-0.1);
+          scanon.move(0,-0.1);
+        }
+        else{
+          sperso.move(0,0.1);
+          scanon.move(0,0.1);
+        }
       }
     }
   }
@@ -85,7 +107,7 @@ void Entite::actions( int z, int t){
 
 }
 
- void Entite::actions(Entite* j){
+ void Entite::actions(Entite* j, int h, int l){
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);
@@ -133,6 +155,10 @@ Tir* Entite::getTir(int i){
 int Entite::getAlive(){
 
   return alive;
+}
+int Entite::getType(){
+
+  return type;
 }
 
 Entite::~Entite(){

@@ -5,7 +5,7 @@ void writer(World* world){
     file.open ("Save/save.txt");
     file << "nbmonstre = "+std::to_string(world->nbMobs())+"\n";
     for(int i=0; i<world->nbMobs(); i++){
-      file << "monstre : x="+std::to_string((int)world->spriteMob(i).getPosition().x)+" y="+std::to_string((int)world->spriteMob(i).getPosition().y)+"\n";
+      file << "monstre : x="+std::to_string((int)world->spriteMob(i).getPosition().x)+" y="+std::to_string((int)world->spriteMob(i).getPosition().y)+ " type="+std::to_string((int)world->getMT(i))+"\n";
     }
     file << "joueur : x="+std::to_string((int)world->spritePlayer().getPosition().x)+" y="+std::to_string((int)world->spritePlayer().getPosition().y)+"\n";
     file << "longueur = "+std::to_string(world->getl())+" hauteur = "+std::to_string(world->geth())+"\n";
