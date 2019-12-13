@@ -50,8 +50,6 @@ void rotation( sf::Sprite* canon, double cursorx, double cursory ){
     angle -= 180;
   }
 
-  printf("%lf\n",angle);
-
   can.setRotation(angle);
   
   *canon = can;

@@ -3,7 +3,7 @@
 Game::Game(){
 
   vector<int> size=lecteur("Maps/ref.txt");
-  window.create(sf::VideoMode(size[0]*64, size[1]*64), "poopy gayme");
+  window.create(sf::VideoMode(size[0]*64, size[1]*64), "TANKWOLF by Elite Reborn");
   window.setFramerateLimit(60);
   mmenu = new MainMun(window.getSize().x,window.getSize().y);
   menu = new Ptmenu(window.getSize().x,window.getSize().y);
