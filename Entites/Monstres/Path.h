@@ -8,6 +8,7 @@
 
 
 int calcG(int x1, int y1, int x2, int y2);
+int calcH(int** t, int x1,int x2, int y1, int y2, int l, int h);
 int pathExists(int** t, int x1,int x2, int y1, int y2, int l, int h);
 
 #endif

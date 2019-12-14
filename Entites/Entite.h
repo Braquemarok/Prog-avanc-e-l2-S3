@@ -5,6 +5,7 @@
 #include "Tirs/Tir.h"
 #include "Tirs/Tir1.h"
 #include "Tirs/Tir2.h"
+#include "Tirs/Tir3.h"
 #include "../List.cpp"
 #include "Animation.h"
 #include "Tirs/mth.h"

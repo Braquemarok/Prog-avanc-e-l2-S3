@@ -13,6 +13,12 @@ void Game::play(){
   int state = 0;
   int lv=1;
   Menu* lvend;
+  sf::Music music;
+  sf::Music musij;
+  if (!music.openFromFile("Sounds/music.ogg")){
+    std::cout << "erreur" << std::endl;
+  }
+  music.play();
   while (window.isOpen())
   {
     sf::Event event;
@@ -49,6 +55,7 @@ void Game::play(){
       }
     }
     else if(state==1){
+      musij.stop();
       menu->handleMenu();
       drawm(menu);
       if(menu->isMenuOver()){
@@ -77,7 +84,11 @@ void Game::play(){
     }
 
     else{
-
+      music.stop();
+      if (!musij.openFromFile("Sounds/fun.ogg")){
+        std::cout << "erreur" << std::endl;
+      }
+      musij.play();
       world->handlevent(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 
       draw();
@@ -100,7 +111,7 @@ void Game::play(){
     }
 
     if( world->isgameover()){
-
+      musij.stop();
       state = 0;
       lv = 1;
     }

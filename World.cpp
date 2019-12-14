@@ -26,6 +26,9 @@ World::World(int num){
     if(lv[3+i*3]==5){
       m.ajouter(new Monstre5(lv[1+i*3],lv[2+i*3]));
     }
+    if(lv[3+i*3]==6){
+      m.ajouter(new Monstre6(lv[1+i*3],lv[2+i*3]));
+    }
     if(lv[3+i*3]==7){
       m.ajouter(new Monstre7(lv[1+i*3],lv[2+i*3]));
     }
@@ -70,6 +73,9 @@ World::World(string s){
     }
     if(sav[3+i*3]==5){
       m.ajouter(new Monstre5(sav[1+i*3],sav[2+i*3]));
+    }
+    if(sav[3+i*3]==6){
+      m.ajouter(new Monstre6(sav[1+i*3],sav[2+i*3]));
     }
     if(sav[3+i*3]==7){
       m.ajouter(new Monstre7(sav[1+i*3],sav[2+i*3]));

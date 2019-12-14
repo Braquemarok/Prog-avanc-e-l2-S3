@@ -8,6 +8,7 @@
 #include "Entites/Monstres/Monstre3.h"
 #include "Entites/Monstres/Monstre4.h"
 #include "Entites/Monstres/Monstre5.h"
+#include "Entites/Monstres/Monstre6.h"
 #include "Entites/Monstres/Monstre7.h"
 #include "Sound.h"
 #include "Map.h"
