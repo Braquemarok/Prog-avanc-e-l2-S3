@@ -26,7 +26,7 @@ public:
   	virtual void actions();
 	virtual void actions( int z, int t);
   	//action monstre en fonction du joueur
-	virtual void actions(Entite* j, int h, int l);
+	virtual void actions(Entite* j,int* map, int h, int l);
 
 	//getters
   	sf::Sprite getEntite();
@@ -36,6 +36,8 @@ public:
 	Tir* getTir(int i);
 	int getAlive();
 	int getType();
+	int res;
+	int pth;
 	~Entite();
 
 protected:

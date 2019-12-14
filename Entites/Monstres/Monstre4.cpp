@@ -1,8 +1,8 @@
-#include "Monstre2.h"
+#include "Monstre4.h"
 
-Monstre2::Monstre2(int x, int y) : Entite() {
+Monstre4::Monstre4(int x, int y) : Entite() {
 
-  if (!perso.loadFromFile("Sprites/Mobs/tank2.png")) {
+  if (!perso.loadFromFile("Sprites/Mobs/tank4.png")) {
 
     std::cout << "erreur" << std::endl;
   }
@@ -11,7 +11,7 @@ Monstre2::Monstre2(int x, int y) : Entite() {
   sperso.setTexture(perso);
   sperso.setTextureRect(sf::IntRect( 0, 0, 64, 64 ));
   sperso.setPosition(x, y);
-  if (!canon.loadFromFile("Sprites/Mobs/canon2.png"))
+  if (!canon.loadFromFile("Sprites/Mobs/canon4.png"))
     std::cout << "erreur" << std::endl;
 
   canon.setSmooth(true);
@@ -20,10 +20,10 @@ Monstre2::Monstre2(int x, int y) : Entite() {
   scanon.setOrigin(19, 24);
   scanon.setPosition(x+32, y+32);
 
-  type=2;
+  type=4;
 }
 
-void Monstre2::actions(Entite* j, int* map, int h, int l){
+void Monstre4::actions(Entite* j, int* map, int h, int l){
   rotation( &scanon, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
@@ -53,9 +53,9 @@ void Monstre2::actions(Entite* j, int* map, int h, int l){
     sens = 1;
     animation( &sperso, &anim, sens );
   }
-  if (clock->getElapsedTime().asMilliseconds()>=700) {
+  if (clock->getElapsedTime().asMilliseconds()>=500) {
     //action de tir
-    Tir1* pew = new Tir1(sperso.getPosition().x+32, sperso.getPosition().y+32, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
+    Tir2* pew = new Tir2(sperso.getPosition().x+32, sperso.getPosition().y+32, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
     rotation( pew->getSTir(), j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
     tirs.ajouter(pew);
     clock->restart();

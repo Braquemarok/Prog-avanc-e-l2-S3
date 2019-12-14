@@ -19,10 +19,16 @@ World::World(int num){
     }
     if(lv[3+i*3]==3){
       m.ajouter(new Monstre3(lv[1+i*3],lv[2+i*3]));
-    }/*
+    }
     if(lv[3+i*3]==4){
       m.ajouter(new Monstre4(lv[1+i*3],lv[2+i*3]));
-    }*/
+    }
+    if(lv[3+i*3]==5){
+      m.ajouter(new Monstre5(lv[1+i*3],lv[2+i*3]));
+    }
+    if(lv[3+i*3]==7){
+      m.ajouter(new Monstre7(lv[1+i*3],lv[2+i*3]));
+    }
   }
 
   const int nbtile = lv[1+nbmonstre*3]*lv[2+nbmonstre*3];
@@ -58,10 +64,16 @@ World::World(string s){
     }
     if(sav[3+i*3]==3){
       m.ajouter(new Monstre3(sav[1+i*3],sav[2+i*3]));
-    }/*
-    if(lv[3+i*3]==4){
+    }
+    if(sav[3+i*3]==4){
       m.ajouter(new Monstre4(sav[1+i*3],sav[2+i*3]));
-    }*/
+    }
+    if(sav[3+i*3]==5){
+      m.ajouter(new Monstre5(sav[1+i*3],sav[2+i*3]));
+    }
+    if(sav[3+i*3]==7){
+      m.ajouter(new Monstre7(sav[1+i*3],sav[2+i*3]));
+    }
   }
 
   const int nbtile = sav[3+nbmonstre*3]*sav[4+nbmonstre*3];
@@ -89,7 +101,7 @@ void World::handlevent(int x, int y){
 
   for( int i = 0; i < m.size() ; i++ ){
 
-    m.get(i)->actions(j, height, length);
+    m.get(i)->actions(j, level, height, length);
     m.get(i)->collision(sf::Vector2u(64, 64), level, length, height);
     for(int j=i+1; j< m.size(); j++){
       m.get(i)->collision(m.get(j)->getEntite());

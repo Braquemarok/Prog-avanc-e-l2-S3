@@ -9,6 +9,6 @@ public:
 
 	Monstre2(int x, int y);
 	//action monstre en fonction du joueur
-	void actions(Entite* j, int h, int l);
+	void actions(Entite* j, int* map, int h, int l);
 };
 #endif

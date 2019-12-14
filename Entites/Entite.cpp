@@ -107,7 +107,7 @@ void Entite::actions( int z, int t){
 
 }
 
- void Entite::actions(Entite* j, int h, int l){
+ void Entite::actions(Entite* j,int* map, int h, int l){
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);

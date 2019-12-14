@@ -2,7 +2,7 @@
 
 Monstre::Monstre(int x, int y) : Entite() {
 
-  if (!perso.loadFromFile("Sprites/Mobs/tank4.png")) {
+  if (!perso.loadFromFile("Sprites/Mobs/tank1.png")) {
 
     std::cout << "erreur" << std::endl;
   }
@@ -11,7 +11,7 @@ Monstre::Monstre(int x, int y) : Entite() {
   sperso.setTexture(perso);
   sperso.setTextureRect(sf::IntRect( 0, 0, 64, 64 ));
   sperso.setPosition(x, y);
-  if (!canon.loadFromFile("Sprites/Mobs/canon4.png"))
+  if (!canon.loadFromFile("Sprites/Mobs/canon1.png"))
     std::cout << "erreur" << std::endl;
 
   canon.setSmooth(true);
@@ -23,7 +23,7 @@ Monstre::Monstre(int x, int y) : Entite() {
 }
 
 //action monstre en fonction du joueur
-void Monstre::actions(Entite* j, int h, int l) {
+void Monstre::actions(Entite* j, int* map, int h, int l) {
   rotation( &scanon, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
   if (clock->getElapsedTime().asMilliseconds()>=500) {
     //action de tir
