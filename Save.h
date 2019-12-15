@@ -6,8 +6,10 @@
 #include <fstream>
 #include "World.h"
 
-using namespace std;
-
+/**
+ * \brief Ecrit l'état du monde dans un fichier de sauvegarde
+ * \param world le monde
+*/
 void writer(World* world);
 
 #endif

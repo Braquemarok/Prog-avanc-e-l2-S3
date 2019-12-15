@@ -14,19 +14,37 @@
 class Game
 {
 public:
-	//constructeur
+	
+  //constructeur
+
+  /**
+   * \brief Construit le jeu
+   */
   Game();
+
+  /**
+   * \brief Lance le jeu
+   */
   void play();
+
+  /**
+   * \brief Dessine le jeu dans la fenetre
+   */
   void draw();
+
+  /**
+   * \brief Dessine le menu dans la fenetre
+   * \param mm le menu à dessiner
+   */
   void drawm(Menu* mm);
   ~Game();
 
 private:
+
   World* world;
   Menu* menu;
   Menu* mmenu;
   int nblv;
 	sf::RenderWindow window;
-
 };
 #endif

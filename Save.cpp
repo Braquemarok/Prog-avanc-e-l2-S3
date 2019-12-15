@@ -1,5 +1,7 @@
 #include "Save.h"
 
+using namespace std;
+
 void writer(World* world){
   ofstream file;
     file.open ("Save/save.txt");

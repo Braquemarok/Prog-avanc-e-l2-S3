@@ -4,7 +4,6 @@ Entite::Entite() {
 
   anim = 0;
   alive = true;
-  degats = 3;
   clock = new sf::Clock();
 }
 
@@ -13,12 +12,6 @@ bool Entite::mort() const {
   return !alive;
 }
 
-int Entite::getdegat(){
-
-  return degats;
-}
-
-//detection collision plus degat si vrai
 void Entite::damage( Tir* m){
 
   sf::FloatRect boundingBox = sperso.getGlobalBounds();
@@ -36,9 +29,12 @@ void Entite::damage( sf::Sprite m){
   sf::FloatRect boundingBox = sperso.getGlobalBounds();
   sf::FloatRect otherBox = m.getGlobalBounds();
 
-  if (boundingBox.intersects(otherBox))
+  if (boundingBox.intersects(otherBox)){
+   
     alive = false;
+  }
 }
+
 void Entite::collision(const int* tiles, unsigned int width, unsigned int height){
   for(unsigned int i=0; i<width; i++){
     for(unsigned int j=0; j<height; j++){
@@ -66,7 +62,7 @@ void Entite::collision(const int* tiles, unsigned int width, unsigned int height
                 scanon.move(0,0.1);
               }
             }
-          }//std::cout<<"MUR"<<std::endl;
+          }
         }
         delete r;
       }
@@ -177,7 +173,6 @@ void Entite::actions( int z, int t){
    if(pth>15){
      res=pathExists(mp, (int)(sperso.getPosition().x+TSIZE/2)/TSIZE, (int)(j->getEntite().getPosition().x+TSIZE/2)/TSIZE,(int)(sperso.getPosition().y+TSIZE/2)/TSIZE, (int)(j->getEntite().getPosition().y+TSIZE/2)/TSIZE, l, h);
      pth=0;
-     //printf("res=%i\n", res);
    }
    for(int i=0; i<l; i++){
      delete[] mp[i];
@@ -218,7 +213,7 @@ sf::Sprite Entite::getstir(int i){
   return tirs.get(i)->getSprite();
 }
 
-int Entite::gettaillet(){
+int Entite::getSizeTir(){
 
   return tirs.size();
 }
@@ -228,10 +223,6 @@ Tir* Entite::getTir(int i){
   return tirs.get(i);
 }
 
-int Entite::getAlive(){
-
-  return alive;
-}
 int Entite::getType(){
 
   return type;

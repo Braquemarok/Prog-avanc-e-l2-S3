@@ -7,10 +7,17 @@ class Joueur : public Entite
 {
 public:
 	//constructeur
+
+	/**
+	 * \brief Construit Joueur
+	 */
 	Joueur();
+	
+	/**
+	 * \brief Construit Joueur
+	 * \param x la position x du monstre
+	 * \param y la position y du monstre
+	*/
 	Joueur(int x, int y);
-
-private:
-
 };
 #endif

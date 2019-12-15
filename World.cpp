@@ -6,11 +6,11 @@ World::World(int num){
 
   vector<int> lv = lecteur("Maps/lv"+to_string(num)+".txt");
   j = new Joueur();
-  //viej = new Vie();
   gameover = false;
   nbmonstre = lv[0];
 
   for( int i = 0 ; i < nbmonstre ; i++ ){
+
     if(lv[3+i*3]==1){
       m.ajouter(new Monstre(lv[1+i*3],lv[2+i*3]));
     }
@@ -38,27 +38,33 @@ World::World(int num){
   length = lv[1+nbmonstre*3];
   height = lv[2+nbmonstre*3];
   level = new int[nbtile];
+
   for( int i = 0 ; i < nbtile ; i++ ){
 
     if(lv[i+3+nbmonstre*3]<0 || lv[i+3+nbmonstre*3]>16){
+      cout << "ERREUR TILESET ERRONE" << endl;
       throw string("ERREUR TILESET ERRONE");
     }
 
     level[i]=lv[i+3+nbmonstre*3];
   }
 
-  if (!map.load("Sprites/Map/tileset.png", sf::Vector2u(64, 64), level, length, height))
+  if (!map.load("Sprites/Map/tileset.png", sf::Vector2u(64, 64), level, length, height)){
+   
     cout << "erreur map" << endl;
+  }
 
 }
 
 World::World(string s){
+
   vector<int> sav = lecteur(s);
   j = new Joueur(sav[1+nbmonstre*3], sav[2+nbmonstre*3]);
   gameover = false;
   nbmonstre = sav[0];
 
   for( int i = 0 ; i < nbmonstre ; i++ ){
+
     if(sav[3+i*3]==1){
       m.ajouter(new Monstre(sav[1+i*3],sav[2+i*3]));
     }
@@ -86,8 +92,12 @@ World::World(string s){
   length = sav[3+nbmonstre*3];
   height = sav[4+nbmonstre*3];
   level = new int[nbtile];
+
   for( int i = 0 ; i < nbtile ; i++ ){
+
     if(sav[i+5+nbmonstre*3]<0 || sav[i+5+nbmonstre*3]>16){
+
+      cout << "ERREUR TILESET ERRONE" << endl;
       throw string("ERREUR TILESET ERRONE");
     }
 
@@ -101,19 +111,25 @@ World::World(string s){
 
 void World::handlevent(int x, int y){
 
-
   j->actions(x, y);
   j->collision(level, length, height);
 
   for( int i = 0; i < m.size() ; i++ ){
+    
     if(m.get(i)->getType()>=5 && m.get(i)->getType()<=7){
+    
       m.get(i)->actions(j, level, height, length);
     }
+    
     else{
+    
       m.get(i)->actions(j);
     }
+    
     m.get(i)->collision(level, length, height);
+    
     for(int j=i+1; j< m.size(); j++){
+
       m.get(i)->collision(m.get(j)->getEntite());
     }
   }
@@ -129,19 +145,27 @@ void World::handlevent(int x, int y){
   }
 
   for( int i = 0 ; i < m.size() ; i++ ){
-    for( int k = 0 ; k < j->gettaillet() ; k++ ){
+    
+    for( int k = 0 ; k < j->getSizeTir() ; k++ ){
 
       m.get(i)->damage(j->getTir(k));
     }
-    for(int k = 0; k < m.get(i)->gettaillet() ; k++){
+    
+    for(int k = 0; k < m.get(i)->getSizeTir() ; k++){
+    
       j->damage(m.get(i)->getTir(k));
       m.get(i)->getTir(k)->collision(level, length, height);
     }
-    if(m.get(i)->mort())
+    
+    if(m.get(i)->mort()){
+     
       m.supprimer(i);
+    }
   }
-  for(int x=0; x<j->gettaillet(); x++){
-       j->getTir(x)->collision(level, length, height);
+
+  for( int i = 0; i < j->getSizeTir(); i++){
+    
+    j->getTir(i)->collision(level, length, height);
   }
 }
 
@@ -186,33 +210,43 @@ TileMap World::getMap(){
 
 int World::je(){
 
-  return j->gettaillet();
+  return j->getSizeTir();
 }
 
 int World::me(int i){
 
-  return m.get(i)->gettaillet();
+  return m.get(i)->getSizeTir();
 }
 
 bool World::isgameover(){
 
   return gameover;
 }
+
 Joueur* World::getPlayer(){
+
   return j;
 }
+
 int World::geth(){
+
   return height;
 }
+
 int World::getl(){
+
   return length;
 }
 int World::getlv(int i){
+
   return level[i];
 }
+
 int World::getMT(int i){
+
   return m.get(i)->getType();
 }
+
 World::~World(){
   delete j;
   delete[] level;
