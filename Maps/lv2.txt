@@ -1,10 +1,10 @@
 nbmonstre = 6
-monstre : x=128 y=128 type=5
-monstre : x=128 y=512 type=3
+monstre : x=128 y=128 type=1
+monstre : x=128 y=512 type=2
 monstre : x=128 y=320 type=2
 monstre : x=1088 y=320 type=2
-monstre : x=1088 y=128 type=3
-monstre : x=1088 y=512 type=5
+monstre : x=1088 y=128 type=2
+monstre : x=1088 y=512 type=1
 longueur = 19, largeur = 10
 lv ={0,2,2,2,2,2,0,2,2,2,2,2,0,2,2,2,2,2,0,
      1,7,7,7,7,7,1,7,7,7,7,7,1,7,7,7,7,7,1,

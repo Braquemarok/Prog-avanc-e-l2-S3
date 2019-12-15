@@ -25,7 +25,7 @@ Monstre::Monstre(int x, int y) : Entite() {
 //action monstre en fonction du joueur
 void Monstre::actions(Entite* j) {
   rotation( &scanon, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
-  if (clock->getElapsedTime().asMilliseconds()>=500) {
+  if (clock->getElapsedTime().asMilliseconds()>=5000) {
     //action de tir
     Tir1* pew = new Tir1(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
     rotation( pew->getSTir(), j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);

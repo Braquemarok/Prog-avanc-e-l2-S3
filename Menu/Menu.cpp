@@ -5,7 +5,7 @@ Menu::Menu(int x, int y){
   if (!font.loadFromFile("Font/upheavtt.ttf")){
       std::cout<< "erreur ttf"<<std::endl;
   }
-  if(!fond.loadFromFile("Sprites/fond.png"))
+  if(!fond.loadFromFile("Sprites/Menus/fond.png"))
   {
     std::cout<< "erreur Image inexistante"<<std::endl;
   }
@@ -26,7 +26,7 @@ Menu::Menu(int x, int y){
     }
 
     else if( i < 3 ){
-      
+
       text[i].setPosition(x/2-70,y/2-36+33*i);
     }
 
@@ -53,6 +53,7 @@ sf::Sprite Menu::getfond(){
   return sfond;
 }
 void Menu::setMenu(){
+  clock->restart();
   over=false;
 }
 int Menu::getOpt(){

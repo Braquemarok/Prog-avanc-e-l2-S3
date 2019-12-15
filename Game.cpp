@@ -15,6 +15,7 @@ void Game::play(){
   int lv=1;
   int m=0;
   Menu* lvend;
+  Menu* go = new GameO(window.getSize().x,window.getSize().y);;
   sf::Music music;
   if (!music.openFromFile("Sounds/music.ogg")){
     std::cout << "erreur" << std::endl;
@@ -37,7 +38,6 @@ void Game::play(){
       state=1;
     }
     if(state==0){
-      mmenu->setMenu();
       mmenu->handleMenu();
       drawm(mmenu);
       if(mmenu->isMenuOver()){
@@ -66,10 +66,12 @@ void Game::play(){
 
         if(menu->getOpt()==1){
           delete world;
+          lv = 1;
           world = new World(lv);
         }
         if(menu->getOpt()==2){
           delete mmenu;
+          lv = 1;
           mmenu = new MainMun(window.getSize().x,window.getSize().y);
           state=0;
           writer(world);
@@ -86,7 +88,7 @@ void Game::play(){
       }
     }
 
-    else{
+    else if(state==3){
       world->handlevent(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 
       draw();
@@ -106,23 +108,33 @@ void Game::play(){
 
         lvend = new Lvend(window.getSize().x,window.getSize().y);
       }
+      if( world->isgameover()){
+        musij.stop();
+        go->setMenu();
+        state = 4;
+        lv = 1;
+      }
     }
-    if((state==0 || state==1) && m==0){
+    else{
+      drawm(go);
+      go->handleMenu();
+      if(go->isMenuOver()){
+        state=0;
+        mmenu->setMenu();
+      }
+    }
+    if((state==0 || state==1 || state==2) && m==0){
       musij.stop();
       music.play();
       m++;
     }
-    else if((state==2 || state>2) && m>0){
+    else if((state==2 || state==3) && m>0){
       music.stop();
       musij.play();
       m=0;
     }
-    if( world->isgameover()){
-      musij.stop();
-      state = 0;
-      lv = 1;
-    }
   }
+  delete go;
 }
 void Game::draw(){
 

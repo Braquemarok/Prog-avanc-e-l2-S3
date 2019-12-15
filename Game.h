@@ -9,12 +9,13 @@
 #include "Menu/MainMun.h"
 #include "Menu/Ptmenu.h"
 #include "Menu/Lvend.h"
+#include "Menu/GameO.h"
 #include "Save.h"
 
 class Game
 {
 public:
-	
+
   //constructeur
 
   /**

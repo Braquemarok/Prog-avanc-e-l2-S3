@@ -53,7 +53,7 @@ void Monstre2::actions(Entite* j){
     sens = 1;
     animation( &sperso, &anim, sens );
   }
-  if (clock->getElapsedTime().asMilliseconds()>=500) {
+  if (clock->getElapsedTime().asMilliseconds()>=2000) {
     //action de tir
     Tir1* pew = new Tir1(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
     rotation( pew->getSTir(), j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);

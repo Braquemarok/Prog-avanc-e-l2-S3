@@ -10,7 +10,6 @@
 #include "Entites/Monstres/Monstre5.h"
 #include "Entites/Monstres/Monstre6.h"
 #include "Entites/Monstres/Monstre7.h"
-#include "Sound.h"
 #include "Map.h"
 #include "Lecteur.h"
 
@@ -139,7 +138,7 @@ public:
    * \return le type du mob à la position i
 	 */
   int getMT(int i);
-  
+
   ~World();
 
 private:
