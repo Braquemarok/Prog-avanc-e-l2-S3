@@ -5,7 +5,7 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include "mth.h"
-
+#define TSIZE 64
 class Tir
 {
 public:
@@ -13,12 +13,13 @@ public:
 	Tir(int z,int v);
 	//action du tir
 	virtual void actions();
-	void collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
+	void collision(const int* tiles, unsigned int width, unsigned int height);
 	void setdead();
 	//getters
 	sf::Sprite getSprite();
 	sf::Sprite* getSTir();
 	bool done();
+	virtual ~Tir();
 
 protected:
 

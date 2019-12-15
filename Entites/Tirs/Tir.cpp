@@ -19,11 +19,11 @@ void Tir::actions(){
     setdead();
   }
 }
-void Tir::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
-  for(int i=0; i<width; i++){
-    for(int j=0; j<height; j++){
+void Tir::collision(const int* tiles, unsigned int width, unsigned int height){
+  for(unsigned int i=0; i<width; i++){
+    for(unsigned int j=0; j<height; j++){
       if(tiles[i + j * width]<3){
-        sf::FloatRect* r = new sf::FloatRect(i*64,j*64,64,64);
+        sf::FloatRect* r = new sf::FloatRect(i*TSIZE,j*TSIZE,TSIZE,TSIZE);
         //std::cout<<rs.getPosition().y<<std::endl;
         if (r->intersects(stir.getGlobalBounds())){
           setdead();
@@ -47,3 +47,4 @@ sf::Sprite* Tir::getSTir(){
 bool Tir::done(){
   return ded;
 }
+Tir::~Tir(){}

@@ -1,1 +1,2 @@
 longueur = 19, largeur = 10
+nblv = 4

@@ -25,6 +25,7 @@ private:
   World* world;
   Menu* menu;
   Menu* mmenu;
+  int nblv;
 	sf::RenderWindow window;
 
 };

@@ -3,10 +3,7 @@ int calcG(int x1, int x2, int y1, int y2){
   return sqrtf((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
 }
 int calcH(int** t, int x1,int x2, int y1, int y2, int l, int h){
-  int calc[4];
-  int x=0;
   int res=0;
-  int** mp;
   t[x1][y1]=1;
   if(x1==x2 && y1==y2){
     res = 1;

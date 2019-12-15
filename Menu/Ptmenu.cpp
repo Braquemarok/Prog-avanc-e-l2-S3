@@ -28,9 +28,9 @@ void Ptmenu::handleMenu(){
       clock->restart();
     }
     for(int i=0; i<4; i++){
-      text[i].setColor(sf::Color::White);
+      text[i].setFillColor(sf::Color::White);
       if(i==option){
-        text[i].setColor(sf::Color::Red);
+        text[i].setFillColor(sf::Color::Red);
       }
     }
   }

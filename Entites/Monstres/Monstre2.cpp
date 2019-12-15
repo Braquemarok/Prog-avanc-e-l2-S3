@@ -23,8 +23,8 @@ Monstre2::Monstre2(int x, int y) : Entite() {
   type=2;
 }
 
-void Monstre2::actions(Entite* j, int* map, int h, int l){
-  rotation( &scanon, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
+void Monstre2::actions(Entite* j){
+  rotation( &scanon, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -2);
@@ -53,10 +53,10 @@ void Monstre2::actions(Entite* j, int* map, int h, int l){
     sens = 1;
     animation( &sperso, &anim, sens );
   }
-  if (clock->getElapsedTime().asMilliseconds()>=700) {
+  if (clock->getElapsedTime().asMilliseconds()>=500) {
     //action de tir
-    Tir1* pew = new Tir1(sperso.getPosition().x+32, sperso.getPosition().y+32, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
-    rotation( pew->getSTir(), j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
+    Tir1* pew = new Tir1(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
+    rotation( pew->getSTir(), j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
     tirs.ajouter(pew);
     clock->restart();
   }

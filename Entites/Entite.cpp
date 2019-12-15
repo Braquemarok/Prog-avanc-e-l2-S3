@@ -19,7 +19,7 @@ int Entite::getdegat(){
 }
 
 //detection collision plus degat si vrai
-void Entite::damage( Tir* m, int degats ){
+void Entite::damage( Tir* m){
 
   sf::FloatRect boundingBox = sperso.getGlobalBounds();
   sf::FloatRect otherBox = m->getSprite().getGlobalBounds();
@@ -31,7 +31,7 @@ void Entite::damage( Tir* m, int degats ){
   }
 }
 
-void Entite::damage( sf::Sprite m, int degats ){
+void Entite::damage( sf::Sprite m){
 
   sf::FloatRect boundingBox = sperso.getGlobalBounds();
   sf::FloatRect otherBox = m.getGlobalBounds();
@@ -39,15 +39,15 @@ void Entite::damage( sf::Sprite m, int degats ){
   if (boundingBox.intersects(otherBox))
     alive = false;
 }
-void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height){
-  for(int i=0; i<width; i++){
-    for(int j=0; j<height; j++){
+void Entite::collision(const int* tiles, unsigned int width, unsigned int height){
+  for(unsigned int i=0; i<width; i++){
+    for(unsigned int j=0; j<height; j++){
       if(tiles[i + j * width]<3){
-        sf::FloatRect* r = new sf::FloatRect(i*64,j*64,64,64);
+        sf::FloatRect* r = new sf::FloatRect(i*TSIZE,j*TSIZE,TSIZE,TSIZE);
         if (r->intersects(sperso.getGlobalBounds())){
           while(r->intersects(sperso.getGlobalBounds())){
-            if(mur(sperso.getPosition().x,i*64)>mur(sperso.getPosition().y,j*64)){
-              if(sperso.getPosition().x<=i*64){
+            if(mur(sperso.getPosition().x,i*TSIZE)>mur(sperso.getPosition().y,j*TSIZE)){
+              if(sperso.getPosition().x<=i*TSIZE){
                 sperso.move(-0.1,0);
                 scanon.move(-0.1,0);
               }
@@ -57,7 +57,7 @@ void Entite::collision(sf::Vector2u tileSize, const int* tiles, unsigned int wid
               }
             }
             else{
-              if(sperso.getPosition().y<=j*64){
+              if(sperso.getPosition().y<=j*TSIZE){
                 sperso.move(0,-0.1);
                 scanon.move(0,-0.1);
               }
@@ -104,10 +104,87 @@ void Entite::collision( sf::Sprite m){
 
 }
 void Entite::actions( int z, int t){
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 
+    sperso.move(5, 0);
+    scanon.move(5, 0);
+    sens = 1;
+    animation( &sperso, &anim, sens );
+  }
+
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+
+    sperso.move(-5, 0);
+    scanon.move(-5, 0);
+    sens = 3;
+    animation( &sperso, &anim, sens );
+  }
+
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+
+    sperso.move(0, -5);
+    scanon.move(0, -5);
+    sens = 0;
+    animation( &sperso, &anim, sens );
+  }
+
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+
+    sperso.move(0, 5);
+    scanon.move(0, 5);
+    sens = 2;
+    animation( &sperso, &anim, sens );
+  }
+
+  rotation( &scanon, z, t );
+
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && clock->getElapsedTime().asMilliseconds()>=500) {
+    //action de tir
+    Tir1* pew = new Tir1(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, z,t);
+    rotation( pew->getSTir(), z, t );
+    tirs.ajouter(pew);
+    clock->restart();
+  }
+
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && clock->getElapsedTime().asMilliseconds()>=700) {
+    //action de tir
+    Tir2* pew = new Tir2(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, z,t);
+    rotation( pew->getSTir(), z, t );
+    tirs.ajouter(pew);
+    clock->restart();
+  }
+
+  for( int i = 0; i < tirs.size() ; i++ ){
+
+    tirs.get(i)->actions();
+
+    if(tirs.get(i)->done())
+      tirs.supprimer(i);
+  }
 }
 
  void Entite::actions(Entite* j,int* map, int h, int l){
+   int** mp;
+   mp=new int* [l];
+   for(int i=0; i<l; i++){
+     mp[i]=new int[h];
+   }
+   for(int i=0; i<l; i++){
+     for(int j=0; j<h; j++){
+       mp[i][j]= map[i+j*l];
+     }
+   }
+   if(pth>15){
+     res=pathExists(mp, (int)(sperso.getPosition().x+TSIZE/2)/TSIZE, (int)(j->getEntite().getPosition().x+TSIZE/2)/TSIZE,(int)(sperso.getPosition().y+TSIZE/2)/TSIZE, (int)(j->getEntite().getPosition().y+TSIZE/2)/TSIZE, l, h);
+     pth=0;
+     //printf("res=%i\n", res);
+   }
+   for(int i=0; i<l; i++){
+     delete[] mp[i];
+   }
+   delete[] mp;
+}
+void Entite::actions(Entite* j){
   if (j->getEntite().getPosition().y < sperso.getPosition().y) {
 
     sperso.move(0, -3);
@@ -125,7 +202,6 @@ void Entite::actions( int z, int t){
     sperso.move(3, 0);
   }
 }
-
 //getters
 sf::Sprite Entite::getEntite(){
 

@@ -103,12 +103,16 @@ void World::handlevent(int x, int y){
 
 
   j->actions(x, y);
-  j->collision(sf::Vector2u(64, 64), level, length, height);
+  j->collision(level, length, height);
 
   for( int i = 0; i < m.size() ; i++ ){
-
-    m.get(i)->actions(j, level, height, length);
-    m.get(i)->collision(sf::Vector2u(64, 64), level, length, height);
+    if(m.get(i)->getType()>=5 && m.get(i)->getType()<=7){
+      m.get(i)->actions(j, level, height, length);
+    }
+    else{
+      m.get(i)->actions(j);
+    }
+    m.get(i)->collision(level, length, height);
     for(int j=i+1; j< m.size(); j++){
       m.get(i)->collision(m.get(j)->getEntite());
     }
@@ -116,7 +120,7 @@ void World::handlevent(int x, int y){
 
   for( int i = 0 ; i < m.size() ; i++ ){
 
-    j->damage(m.get(i)->getEntite(), m.get(i)->getdegat());
+    j->damage(m.get(i)->getEntite());
 
     if( j->mort()){
 
@@ -127,17 +131,17 @@ void World::handlevent(int x, int y){
   for( int i = 0 ; i < m.size() ; i++ ){
     for( int k = 0 ; k < j->gettaillet() ; k++ ){
 
-      m.get(i)->damage(j->getTir(k), j->getdegat());
+      m.get(i)->damage(j->getTir(k));
     }
     for(int k = 0; k < m.get(i)->gettaillet() ; k++){
-      j->damage(m.get(i)->getTir(k), m.get(i)->getdegat());
-      m.get(i)->getTir(k)->collision(sf::Vector2u(64, 64), level, length, height);
+      j->damage(m.get(i)->getTir(k));
+      m.get(i)->getTir(k)->collision(level, length, height);
     }
     if(m.get(i)->mort())
       m.supprimer(i);
   }
   for(int x=0; x<j->gettaillet(); x++){
-       j->getTir(x)->collision(sf::Vector2u(64, 64), level, length, height);
+       j->getTir(x)->collision(level, length, height);
   }
 }
 

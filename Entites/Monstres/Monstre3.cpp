@@ -23,12 +23,12 @@ Monstre3::Monstre3(int x, int y) : Entite() {
   type=3;
 }
 
-void Monstre3::actions(Entite* j, int* map, int h, int l) {
-  rotation( &scanon, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
+void Monstre3::actions(Entite* j) {
+  rotation( &scanon, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
   if (clock->getElapsedTime().asMilliseconds()>=700) {
     //action de tir
-    Tir2* pew = new Tir2(sperso.getPosition().x+32, sperso.getPosition().y+32, j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
-    rotation( pew->getSTir(), j->getEntite().getPosition().x+32, j->getEntite().getPosition().y+32);
+    Tir2* pew = new Tir2(sperso.getPosition().x+TSIZE/2, sperso.getPosition().y+TSIZE/2, j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
+    rotation( pew->getSTir(), j->getEntite().getPosition().x+TSIZE/2, j->getEntite().getPosition().y+TSIZE/2);
     tirs.ajouter(pew);
     clock->restart();
   }

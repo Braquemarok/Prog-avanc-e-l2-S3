@@ -16,7 +16,7 @@ public:
   sf::Sprite getfond();
   void setMenu();
   int getOpt();
-  ~Menu();
+  virtual ~Menu();
 
 protected:
 

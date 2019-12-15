@@ -2,7 +2,7 @@
 #define DEF_MST7
 
 #include "../Entite.h"
-#include "Path.h"
+
 
 class Monstre7 : public Entite
 {

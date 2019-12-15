@@ -5,6 +5,7 @@ Game::Game(){
   vector<int> size=lecteur("Maps/ref.txt");
   window.create(sf::VideoMode(size[0]*64, size[1]*64), "TANKWOLF by Elite Reborn");
   window.setFramerateLimit(60);
+  nblv=size[2];
   mmenu = new MainMun(window.getSize().x,window.getSize().y);
   menu = new Ptmenu(window.getSize().x,window.getSize().y);
   world = new World(1);
@@ -12,13 +13,16 @@ Game::Game(){
 void Game::play(){
   int state = 0;
   int lv=1;
+  int m=0;
   Menu* lvend;
   sf::Music music;
-  sf::Music musij;
   if (!music.openFromFile("Sounds/music.ogg")){
     std::cout << "erreur" << std::endl;
   }
-  music.play();
+  sf::Music musij;
+  if (!musij.openFromFile("Sounds/fun.ogg")){
+    std::cout << "erreur" << std::endl;
+  }
   while (window.isOpen())
   {
     sf::Event event;
@@ -55,7 +59,6 @@ void Game::play(){
       }
     }
     else if(state==1){
-      musij.stop();
       menu->handleMenu();
       drawm(menu);
       if(menu->isMenuOver()){
@@ -84,11 +87,6 @@ void Game::play(){
     }
 
     else{
-      music.stop();
-      if (!musij.openFromFile("Sounds/fun.ogg")){
-        std::cout << "erreur" << std::endl;
-      }
-      musij.play();
       world->handlevent(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 
       draw();
@@ -97,7 +95,7 @@ void Game::play(){
 
         lv++;
 
-        if(lv > 4)
+        if(lv > nblv)
           lv = 1;
 
         state = 2;
@@ -109,7 +107,16 @@ void Game::play(){
         lvend = new Lvend(window.getSize().x,window.getSize().y);
       }
     }
-
+    if((state==0 || state==1) && m==0){
+      musij.stop();
+      music.play();
+      m++;
+    }
+    else if((state==2 || state>2) && m>0){
+      music.stop();
+      musij.play();
+      m=0;
+    }
     if( world->isgameover()){
       musij.stop();
       state = 0;
