@@ -1,0 +1,342 @@
+\hypertarget{classWorld}{}\section{World Class Reference}
+\label{classWorld}\index{World@{World}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorld_a36ef8e67290e939d93d6b46a2e58abf2}{World} (int num)
+\begin{DoxyCompactList}\small\item\em Construit le monde. \end{DoxyCompactList}\item 
+\hyperlink{classWorld_a355ad01d1b25fb78d93778265169ec83}{World} (string s)
+\begin{DoxyCompactList}\small\item\em Construit le monde. \end{DoxyCompactList}\item 
+void \hyperlink{classWorld_aafe1304ddcf960c1bb02f76a39499355}{handlevent} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Gère les évènements du monde. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_a9927043bfd49fe8b6a2222350bf1dee7}{sprite\+Mob} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du mob i. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_a22d26a89c5c09fb408733518b4cd696d}{sprite\+Mcanon} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du canon du mob i. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a78c5310cba881f2a5ae27def30b56222}{nb\+Mobs} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de mobs. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_ab2d9a669d4fff12fc637bead8ac9c850}{sprite\+Player} ()
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du joueur. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_a2b2c53230bf0f789fb38bbd6d5f4feb7}{sprite\+Pcanon} ()
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du canon du joueur. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_ad54259b8e35a3424e6aae5e530ab7811}{st} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du tir du joueur. \end{DoxyCompactList}\item 
+sf\+::\+Sprite \hyperlink{classWorld_a568baaaf16893722fb4102c261c5e17e}{sm} (int i, int j)
+\begin{DoxyCompactList}\small\item\em Retourne le sprite du tir du mob à la position i. \end{DoxyCompactList}\item 
+\hyperlink{classTileMap}{Tile\+Map} \hyperlink{classWorld_ac686b2503a9315f76bd93c362ee08520}{get\+Map} ()
+\begin{DoxyCompactList}\small\item\em Retourne la map. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a804aaaacc7e7ce0cad149e419a497842}{je} ()
+\begin{DoxyCompactList}\small\item\em Retourne la taille de la liste de tir du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a5793d35698e731469c63a9dff298ea0a}{me} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne la taille de la liste de tir du mob à la position i. \end{DoxyCompactList}\item 
+bool \hyperlink{classWorld_a321628349a53070bd5cfa209987fbf4a}{isgameover} ()
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état du jeu. \end{DoxyCompactList}\item 
+Joueur $\ast$ \hyperlink{classWorld_a529077baf90f8f90b3d5b286bfa69490}{get\+Player} ()
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}entité Joueur. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a641eb75c81ff846ac12104941cb2b284}{geth} ()
+\begin{DoxyCompactList}\small\item\em Retourne la hauteur de la map. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a319ec8ce8b40a73bfba442a69c3bf621}{getl} ()
+\begin{DoxyCompactList}\small\item\em Retourne la largeur de la map. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_a2439134de6a6ca2a66539d9f7ac35f4f}{getlv} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne une tile du niveau. \end{DoxyCompactList}\item 
+int \hyperlink{classWorld_afd3ebf8f3c57ce62653ff620a4efd3e6}{get\+MT} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le type du mob à la position i. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWorld_a36ef8e67290e939d93d6b46a2e58abf2}\label{classWorld_a36ef8e67290e939d93d6b46a2e58abf2}} 
+\index{World@{World}!World@{World}}
+\index{World@{World}!World@{World}}
+\subsubsection{\texorpdfstring{World()}{World()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily World\+::\+World (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Construit le monde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & le numéro du niveau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWorld_a355ad01d1b25fb78d93778265169ec83}\label{classWorld_a355ad01d1b25fb78d93778265169ec83}} 
+\index{World@{World}!World@{World}}
+\index{World@{World}!World@{World}}
+\subsubsection{\texorpdfstring{World()}{World()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily World\+::\+World (\begin{DoxyParamCaption}\item[{string}]{s }\end{DoxyParamCaption})}
+
+
+
+Construit le monde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & la sauvegarde \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWorld_a641eb75c81ff846ac12104941cb2b284}\label{classWorld_a641eb75c81ff846ac12104941cb2b284}} 
+\index{World@{World}!geth@{geth}}
+\index{geth@{geth}!World@{World}}
+\subsubsection{\texorpdfstring{geth()}{geth()}}
+{\footnotesize\ttfamily int World\+::geth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la hauteur de la map. 
+
+\begin{DoxyReturn}{Returns}
+la hauteur de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a319ec8ce8b40a73bfba442a69c3bf621}\label{classWorld_a319ec8ce8b40a73bfba442a69c3bf621}} 
+\index{World@{World}!getl@{getl}}
+\index{getl@{getl}!World@{World}}
+\subsubsection{\texorpdfstring{getl()}{getl()}}
+{\footnotesize\ttfamily int World\+::getl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la largeur de la map. 
+
+\begin{DoxyReturn}{Returns}
+la largeur de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a2439134de6a6ca2a66539d9f7ac35f4f}\label{classWorld_a2439134de6a6ca2a66539d9f7ac35f4f}} 
+\index{World@{World}!getlv@{getlv}}
+\index{getlv@{getlv}!World@{World}}
+\subsubsection{\texorpdfstring{getlv()}{getlv()}}
+{\footnotesize\ttfamily int World\+::getlv (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne une tile du niveau. 
+
+\begin{DoxyReturn}{Returns}
+une tile du niveau du niveau 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_ac686b2503a9315f76bd93c362ee08520}\label{classWorld_ac686b2503a9315f76bd93c362ee08520}} 
+\index{World@{World}!get\+Map@{get\+Map}}
+\index{get\+Map@{get\+Map}!World@{World}}
+\subsubsection{\texorpdfstring{get\+Map()}{getMap()}}
+{\footnotesize\ttfamily \hyperlink{classTileMap}{Tile\+Map} World\+::get\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la map. 
+
+\begin{DoxyReturn}{Returns}
+la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_afd3ebf8f3c57ce62653ff620a4efd3e6}\label{classWorld_afd3ebf8f3c57ce62653ff620a4efd3e6}} 
+\index{World@{World}!get\+MT@{get\+MT}}
+\index{get\+MT@{get\+MT}!World@{World}}
+\subsubsection{\texorpdfstring{get\+M\+T()}{getMT()}}
+{\footnotesize\ttfamily int World\+::get\+MT (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne le type du mob à la position i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & le mob à la position i \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le type du mob à la position i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a529077baf90f8f90b3d5b286bfa69490}\label{classWorld_a529077baf90f8f90b3d5b286bfa69490}} 
+\index{World@{World}!get\+Player@{get\+Player}}
+\index{get\+Player@{get\+Player}!World@{World}}
+\subsubsection{\texorpdfstring{get\+Player()}{getPlayer()}}
+{\footnotesize\ttfamily Joueur $\ast$ World\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne l\textquotesingle{}entité Joueur. 
+
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}entité Joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_aafe1304ddcf960c1bb02f76a39499355}\label{classWorld_aafe1304ddcf960c1bb02f76a39499355}} 
+\index{World@{World}!handlevent@{handlevent}}
+\index{handlevent@{handlevent}!World@{World}}
+\subsubsection{\texorpdfstring{handlevent()}{handlevent()}}
+{\footnotesize\ttfamily void World\+::handlevent (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Gère les évènements du monde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & la position x du curseur \\
+\hline
+{\em y} & la position y du curseur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWorld_a321628349a53070bd5cfa209987fbf4a}\label{classWorld_a321628349a53070bd5cfa209987fbf4a}} 
+\index{World@{World}!isgameover@{isgameover}}
+\index{isgameover@{isgameover}!World@{World}}
+\subsubsection{\texorpdfstring{isgameover()}{isgameover()}}
+{\footnotesize\ttfamily bool World\+::isgameover (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne l\textquotesingle{}état du jeu. 
+
+\begin{DoxyReturn}{Returns}
+vrai si le jeu est fini, faux sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a804aaaacc7e7ce0cad149e419a497842}\label{classWorld_a804aaaacc7e7ce0cad149e419a497842}} 
+\index{World@{World}!je@{je}}
+\index{je@{je}!World@{World}}
+\subsubsection{\texorpdfstring{je()}{je()}}
+{\footnotesize\ttfamily int World\+::je (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la taille de la liste de tir du joueur. 
+
+\begin{DoxyReturn}{Returns}
+la taille de la liste de tir du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a5793d35698e731469c63a9dff298ea0a}\label{classWorld_a5793d35698e731469c63a9dff298ea0a}} 
+\index{World@{World}!me@{me}}
+\index{me@{me}!World@{World}}
+\subsubsection{\texorpdfstring{me()}{me()}}
+{\footnotesize\ttfamily int World\+::me (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne la taille de la liste de tir du mob à la position i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & le mob à la position i \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la taille de la liste de tir du mob à la position i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a78c5310cba881f2a5ae27def30b56222}\label{classWorld_a78c5310cba881f2a5ae27def30b56222}} 
+\index{World@{World}!nb\+Mobs@{nb\+Mobs}}
+\index{nb\+Mobs@{nb\+Mobs}!World@{World}}
+\subsubsection{\texorpdfstring{nb\+Mobs()}{nbMobs()}}
+{\footnotesize\ttfamily int World\+::nb\+Mobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de mobs. 
+
+\begin{DoxyReturn}{Returns}
+le nombre de mobs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a568baaaf16893722fb4102c261c5e17e}\label{classWorld_a568baaaf16893722fb4102c261c5e17e}} 
+\index{World@{World}!sm@{sm}}
+\index{sm@{sm}!World@{World}}
+\subsubsection{\texorpdfstring{sm()}{sm()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::sm (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du tir du mob à la position i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & le mob à la position i \\
+\hline
+{\em j} & la position du tir dans la liste \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le sprite du tir du mob à la position i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a22d26a89c5c09fb408733518b4cd696d}\label{classWorld_a22d26a89c5c09fb408733518b4cd696d}} 
+\index{World@{World}!sprite\+Mcanon@{sprite\+Mcanon}}
+\index{sprite\+Mcanon@{sprite\+Mcanon}!World@{World}}
+\subsubsection{\texorpdfstring{sprite\+Mcanon()}{spriteMcanon()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::sprite\+Mcanon (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du canon du mob i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & le mob à la position i \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le sprite du canon du mob i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a9927043bfd49fe8b6a2222350bf1dee7}\label{classWorld_a9927043bfd49fe8b6a2222350bf1dee7}} 
+\index{World@{World}!sprite\+Mob@{sprite\+Mob}}
+\index{sprite\+Mob@{sprite\+Mob}!World@{World}}
+\subsubsection{\texorpdfstring{sprite\+Mob()}{spriteMob()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::sprite\+Mob (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du mob i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & le mob à la position i \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le sprite du mob i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_a2b2c53230bf0f789fb38bbd6d5f4feb7}\label{classWorld_a2b2c53230bf0f789fb38bbd6d5f4feb7}} 
+\index{World@{World}!sprite\+Pcanon@{sprite\+Pcanon}}
+\index{sprite\+Pcanon@{sprite\+Pcanon}!World@{World}}
+\subsubsection{\texorpdfstring{sprite\+Pcanon()}{spritePcanon()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::sprite\+Pcanon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du canon du joueur. 
+
+\begin{DoxyReturn}{Returns}
+le sprite du canon du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_ab2d9a669d4fff12fc637bead8ac9c850}\label{classWorld_ab2d9a669d4fff12fc637bead8ac9c850}} 
+\index{World@{World}!sprite\+Player@{sprite\+Player}}
+\index{sprite\+Player@{sprite\+Player}!World@{World}}
+\subsubsection{\texorpdfstring{sprite\+Player()}{spritePlayer()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::sprite\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du joueur. 
+
+\begin{DoxyReturn}{Returns}
+le sprite du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWorld_ad54259b8e35a3424e6aae5e530ab7811}\label{classWorld_ad54259b8e35a3424e6aae5e530ab7811}} 
+\index{World@{World}!st@{st}}
+\index{st@{st}!World@{World}}
+\subsubsection{\texorpdfstring{st()}{st()}}
+{\footnotesize\ttfamily sf\+::\+Sprite World\+::st (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retourne le sprite du tir du joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & la position du tir dans la liste \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le sprite du tir du joueur 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+World.\+h\item 
+World.\+cpp\end{DoxyCompactItemize}
